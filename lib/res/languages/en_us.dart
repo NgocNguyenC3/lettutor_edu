@@ -5,6 +5,7 @@ final Map<String, String> enUS = {
       'Become fluent faster through one on one video chat lessons tailored to your goals.',
   'login.continue': 'Or continue with',
   'login.not.member': 'Not a member yet?',
+  'login': 'Log in',
 
   // Common
   'email.title': 'Email',

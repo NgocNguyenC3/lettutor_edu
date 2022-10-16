@@ -5,6 +5,7 @@ final Map<String, String> viVN = {
       'Phát triển kỹ năng tiếng Anh nhanh nhất bằng cách học 1 kèm 1 trực tuyến theo mục tiêu và lộ trình dành cho riêng bạn.',
   'login.continue': 'Hoặc tiếp tục với',
   'login.not.member': 'Chưa có tài khoản?',
+  'login': 'Đăng nhập',
 
   // Common
   'email.title': 'Email',
