@@ -22,7 +22,7 @@ class ColorName {
   static const Color greenLightColor = Color(0xFF5AC07D);
   static const Color orangeColor = Color(0xFFFB5427);
   static const Color pinkishGrey = Color(0xCCCCCCFF);
-  static const Color primaryColor = Color(0xFF131740);
+  static const Color primaryColor = Color(0xFF0071F0);
   static const Color redColor = Color(0xFFFF0022);
   static const Color steelGrey = Color(0xFF7F8489);
   static const Color textGreyColor = Color(0xFF777777);

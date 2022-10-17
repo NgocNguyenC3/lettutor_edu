@@ -58,17 +58,14 @@ class InputFieldArea extends StatelessWidget {
           child: Text(
             LocalString.forgetPassword,
             style:
-                text16.copyWith(color: const Color.fromRGBO(40, 106, 210, 1)),
+                text14.copyWith(color: const Color.fromRGBO(40, 106, 210, 1)),
           ),
         ),
         SizedBox(
-          height: 10.h,
+          height: 15.h,
         ),
         LoadingButtonWidget(
             submit: () {}, isLoading: false, label: LocalString.login),
-        SizedBox(
-          height: 10.h,
-        ),
       ],
     );
   }

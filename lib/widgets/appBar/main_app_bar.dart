@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 
-class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
+class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({
     Key? key,
     required this.actions,
@@ -21,6 +21,17 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
         right: 10.w,
         top: 30.h,
       ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5.r,
+            blurRadius: 7.r,
+            offset: const Offset(0, 2), // changes position of shadow
+          ),
+        ],
+      ),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,5 +45,4 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
           ]),
     );
   }
-  
 }
