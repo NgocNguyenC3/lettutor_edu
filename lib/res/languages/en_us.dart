@@ -6,7 +6,7 @@ final Map<String, String> enUS = {
   'login.continue': 'Or continue with',
   'login.not.member': 'Not a member yet?',
   'login': 'Log in',
-  'forgot.password.title': 'ResetPassword',
+  'forgot.password.title': 'Reset Password',
   'forgot.password.sub.title':
       'Please enter your email address to search for your account.',
 

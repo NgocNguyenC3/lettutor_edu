@@ -9,7 +9,7 @@ abstract class BaseController<C> extends GetxController {
   final _appController = Get.find<AppController>();
   late Rx<Locale?> locale;
 
-  void onReloadData() {}
+  void onReloadData();
 
   @override
   void onInit() {
