@@ -4,16 +4,10 @@ import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
-import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
-import 'package:lettutor_edu_clone/res/gen/colors.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
-import 'package:lettutor_edu_clone/ui/base/base_page.dart';
-import 'package:lettutor_edu_clone/ui/dash_board.dart/components/header_dash_board.dart';
+
 import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_controller.dart';
-import 'package:lettutor_edu_clone/ui/login/components/input_field_area.dart';
-import 'package:lettutor_edu_clone/ui/login/components/login_title_area.dart';
-import 'package:lettutor_edu_clone/ui/login/components/sign_up_area.dart';
-import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
+
 import 'package:lettutor_edu_clone/widgets/common/text/text_container.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
 

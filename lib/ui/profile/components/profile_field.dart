@@ -1,17 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
-import 'package:lettutor_edu_clone/res/gen/colors.gen.dart';
-import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 import 'package:lettutor_edu_clone/ui/profile/components/want_to_learn_wrap.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_controller.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
-import 'package:lettutor_edu_clone/widgets/common/text_field/label_english_type.dart';
 import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
 
 class ProfileField extends StatelessWidget {

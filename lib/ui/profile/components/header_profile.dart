@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
-import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 import 'package:lettutor_edu_clone/ui/profile/components/logo_profile.dart';
-import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
-import 'package:lettutor_edu_clone/widgets/icon/circle_icon_widget.dart';
+
 
 class HeaderProfile extends StatelessWidget {
   const HeaderProfile({

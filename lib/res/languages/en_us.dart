@@ -23,6 +23,12 @@ final Map<String, String> enUS = {
   'account': 'Account',
   'save': 'Save',
   'book': 'Book',
+  'favorite': 'Favorite',
+  'reviews': 'Reviews',
+  'report': 'Report',
+  'languages': 'Languages',
+  'specialties': 'Specialties',
+  'interests': 'Interests',
 
   // Warning
   'warning.empty.email': 'Please input your Email!',
@@ -69,4 +75,11 @@ final Map<String, String> enUS = {
   'dash.board.no.review': 'No reviews yet',
   'dash.board.select.available.time': 'Select available tutoring time:',
 
+  //Change password
+  'change.password.new': 'New Password',
+  'change.password.confirm': 'Confirm Password',
+
+  //Tutor Detail
+  'tutor.detail.suggested.course': 'Suggested courses',
+  'tutor.detail.ex': 'Teaching experience',
 };

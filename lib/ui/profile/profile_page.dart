@@ -1,21 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
-import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
-import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/gen/colors.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 import 'package:lettutor_edu_clone/ui/base/base_page.dart';
-import 'package:lettutor_edu_clone/ui/forgot_password/forgot_password_controller.dart';
 import 'package:lettutor_edu_clone/ui/profile/components/header_profile.dart';
 import 'package:lettutor_edu_clone/ui/profile/components/profile_field.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_controller.dart';
-import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
-import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
-import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
-import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
+
 
 class ProfilePage extends BasePage<ProfileController> {
   @override

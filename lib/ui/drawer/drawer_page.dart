@@ -7,11 +7,6 @@ import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
-import 'package:lettutor_edu_clone/ui/base/base_page.dart';
-import 'package:lettutor_edu_clone/ui/login/components/input_field_area.dart';
-import 'package:lettutor_edu_clone/ui/login/components/login_title_area.dart';
-import 'package:lettutor_edu_clone/ui/login/components/sign_up_area.dart';
-import 'package:lettutor_edu_clone/ui/login/login_controller.dart';
 import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
 
 class DrawerPage extends StatelessWidget {
@@ -46,11 +41,11 @@ class DrawerPage extends StatelessWidget {
         listTitle(
             iconData: Icons.key,
             title: LocalString.drawerChangePassword,
-            named: ''),
+            named: AppRoutes.CHANGE_PASSWORD),
         listTitle(
             iconData: Icons.contacts,
             title: LocalString.drawerTutor,
-            named: ''),
+            named: AppRoutes.DASHBOARD),
         listTitle(
             iconData: Icons.event_available,
             title: LocalString.drawerSchedule,
@@ -82,7 +77,9 @@ class DrawerPage extends StatelessWidget {
       required String named}) {
     return InkWell(
       onTap: () {
-        Get.offNamed(named);
+        if (named.isNotEmpty) {
+          Get.offNamed(named);
+        }
       },
       child: Row(
         children: [

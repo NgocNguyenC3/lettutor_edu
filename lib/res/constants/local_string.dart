@@ -28,6 +28,13 @@ class LocalString {
   static final String save = 'save'.tr;
   static final String book = 'book'.tr;
 
+  static final String favorite = 'favorite'.tr;
+  static final String report = 'report'.tr;
+  static final String reviews = 'reviews'.tr;
+  static final String languages = 'languages'.tr;
+  static final String specialties = 'specialties'.tr;
+  static final String interests = 'interests'.tr;
+
   // Warning
   static final String warningEmptyEmail = 'warning.empty.email'.tr;
   static final String warningEmptyPassword = 'warning.empty.password'.tr;
@@ -62,7 +69,8 @@ class LocalString {
   static final String dashBoardEnterRoom = 'dash.board.enter.room'.tr;
   static final String dashBoardTotalTime = 'dash.board.total.time'.tr;
   static final String dashBoardFindTutor = 'dash.board.find.tutor'.tr;
-  static final String dashBoardEnterTutorName = 'dash.board.enter.tutor.name'.tr;
+  static final String dashBoardEnterTutorName =
+      'dash.board.enter.tutor.name'.tr;
   static final String dashBoardSelectTutorNation = 'dash.board.tutor.nation'.tr;
   static final String dashBoardSelectDay = 'dash.board.select.day'.tr;
   static final String dashBoardStartTime = 'dash.board.start.time'.tr;
@@ -70,5 +78,15 @@ class LocalString {
   static final String dashBoardResetFilter = 'dash.board.reset.filter'.tr;
   static final String dashBoardRecommendTutor = 'dash.board.recommend.tutor'.tr;
   static final String dashBoardNoReview = 'dash.board.no.review'.tr;
-  static final String dashBoardSelectAvailableTime = 'dash.board.select.available.time'.tr;
+  static final String dashBoardSelectAvailableTime =
+      'dash.board.select.available.time'.tr;
+
+  //Change password
+  static final String changePasswordNew = 'change.password.new'.tr;
+  static final String changePasswordConfirm = 'change.password.confirm'.tr;
+
+  //Tutor Detail
+  static final String tutorDetailSuggestedCourse =
+      'tutor.detail.suggested.course'.tr;
+  static final String tutorDetailEx = 'tutor.detail.ex'.tr;
 }

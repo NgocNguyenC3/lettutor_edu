@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/app/app_pages.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
@@ -7,23 +10,18 @@ import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/gen/colors.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
-import 'package:lettutor_edu_clone/ui/base/base_page.dart';
-import 'package:lettutor_edu_clone/ui/dash_board.dart/components/filter_area.dart';
-import 'package:lettutor_edu_clone/ui/dash_board.dart/components/header_dash_board.dart';
 import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_controller.dart';
-import 'package:lettutor_edu_clone/ui/login/components/input_field_area.dart';
-import 'package:lettutor_edu_clone/ui/login/components/login_title_area.dart';
-import 'package:lettutor_edu_clone/ui/login/components/sign_up_area.dart';
-import 'package:lettutor_edu_clone/ui/profile/components/logo_profile.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 import 'package:lettutor_edu_clone/widgets/common/text/text_container.dart';
-import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
+
 import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
-import 'package:lettutor_edu_clone/widgets/icon/circle_icon_widget.dart';
+
 
 class InformationTutorContainer extends StatelessWidget {
-  const InformationTutorContainer({
+  double countRating;
+  InformationTutorContainer({
     Key? key,
+    required this.countRating,
     required this.controller,
   }) : super(key: key);
 
@@ -70,10 +68,28 @@ class InformationTutorContainer extends StatelessWidget {
                 SizedBox(
                   height: 10.h,
                 ),
-                Text(
-                  LocalString.dashBoardNoReview,
-                  style: text16.copyWith(color: Colors.grey),
-                ),
+                countRating == 0
+                    ? Text(
+                        LocalString.dashBoardNoReview,
+                        style: text16.copyWith(color: Colors.grey),
+                      )
+                    : RatingBar.builder(
+                        initialRating: countRating,
+                        minRating: countRating,
+                        maxRating: countRating,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemSize: 20,
+                        itemPadding:
+                            const EdgeInsets.symmetric(horizontal: 4.0),
+                        itemBuilder: (context, _) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 5,
+                        ),
+                        onRatingUpdate: (rating) {},
+                      ),
                 SizedBox(
                   height: 15.h,
                 ),
@@ -98,7 +114,9 @@ class InformationTutorContainer extends StatelessWidget {
                   child: SizedBox(
                     width: Get.width / 2 - 30.w,
                     child: LoadingButtonWidget(
-                        submit: () {},
+                        submit: () {
+                          Get.toNamed(AppRoutes.TUTOR_DETAIL);
+                        },
                         height: 30.h,
                         isLoading: false,
                         primaryColor: primaryColor.withOpacity(0.5),
