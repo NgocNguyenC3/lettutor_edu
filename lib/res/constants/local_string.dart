@@ -10,6 +10,9 @@ class LocalString {
   static final String loginContinueWith = 'login.continue'.tr;
   static final String loginNotAMember = 'login.not.member'.tr;
   
+  // Forgot-password
+  static final String forgotPasswordTiTle = 'forgot.password.title'.tr;
+  static final String forgotPasswordSubTiTle = 'forgot.password.sub.title'.tr;
 
   // Common
   static final String emailTitle = 'email.title'.tr;
@@ -18,6 +21,7 @@ class LocalString {
   static final String signUp = 'sign.up'.tr;
   static final String english = 'english'.tr;
   static final String vietName = 'viet.nam'.tr;
+  static final String confirm = 'confirm'.tr;
 
   // Warning
   static final String warningEmptyEmail = 'warning.empty.email'.tr;

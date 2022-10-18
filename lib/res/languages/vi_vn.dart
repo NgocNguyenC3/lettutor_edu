@@ -6,6 +6,9 @@ final Map<String, String> viVN = {
   'login.continue': 'Hoặc tiếp tục với',
   'login.not.member': 'Chưa có tài khoản?',
   'login': 'Đăng nhập',
+  'forgot.password.title': 'Đặt lại mật khẩu',
+  'forgot.password.sub.title':
+      'Vui lòng nhập email để tìm kiếm tài khoản của bạn.',
 
   // Common
   'email.title': 'Email',
@@ -14,11 +17,13 @@ final Map<String, String> viVN = {
   'sign.up': 'Đăng ký',
   'english': 'Tiếng anh',
   'viet.nam': 'Tiếng việt',
+  'confirm': 'Xác nhận',
 
   // Warning
   'warning.empty.email': 'Vui lòng nhập Email',
   'warning.empty.password': 'Vui lòng nhập mật khẩu',
   'warning.wrong.email': 'Email không phù hợp',
   //'warning.wrong.password': 'Email không phù hợp',
-  'warning.login.fail': 'Đăng nhập thất bại! Bạn đã nhập sai email hoặc mật khẩu',
+  'warning.login.fail':
+      'Đăng nhập thất bại! Bạn đã nhập sai email hoặc mật khẩu',
 };

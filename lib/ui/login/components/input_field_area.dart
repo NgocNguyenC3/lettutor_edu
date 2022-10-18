@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
@@ -54,7 +56,9 @@ class InputFieldArea extends StatelessWidget {
           height: 10.h,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.FORGOT_PASSWORD);
+          },
           child: Text(
             LocalString.forgetPassword,
             style:

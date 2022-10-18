@@ -6,6 +6,9 @@ final Map<String, String> enUS = {
   'login.continue': 'Or continue with',
   'login.not.member': 'Not a member yet?',
   'login': 'Log in',
+  'forgot.password.title': 'ResetPassword',
+  'forgot.password.sub.title':
+      'Please enter your email address to search for your account.',
 
   // Common
   'email.title': 'Email',
@@ -14,6 +17,7 @@ final Map<String, String> enUS = {
   'sign.up': 'Sign up',
   'english': 'English',
   'viet.nam': 'Vietnamese',
+  'confirm': 'Confirm',
 
   // Warning
   'warning.empty.email': 'Please input your Email!',

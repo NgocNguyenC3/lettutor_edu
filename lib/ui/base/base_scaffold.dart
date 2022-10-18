@@ -27,7 +27,7 @@ class BaseScaffold extends StatelessWidget {
       this.background,
       this.backgroundChild,
       this.resizeToAvoidBottomInset = false,
-      this.isPaddingDefault = false,
+      this.isPaddingDefault = true,
       this.isBaseDrawer = true,
       this.appbar,
       this.marginCustom,
@@ -44,10 +44,9 @@ class BaseScaffold extends StatelessWidget {
         backgroundColor: background,
         body: isPaddingDefault
             ? Container(
-                color: backgroundColor,
                 margin: marginCustom,
                 padding:
-                    paddingCustom ?? const EdgeInsets.symmetric(horizontal: 10),
+                    paddingCustom ?? EdgeInsets.symmetric(horizontal: 20.w),
                 child: body,
               )
             : body,
