@@ -1,16 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
+import 'package:lettutor_edu_clone/ui/login/login_controller.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
 
 class InputFieldArea extends StatelessWidget {
-  const InputFieldArea({
+  late LoginController loginController;
+  InputFieldArea({
     Key? key,
+    required this.loginController,
   }) : super(key: key);
 
   @override
@@ -68,8 +73,16 @@ class InputFieldArea extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        LoadingButtonWidget(
-            submit: () {}, isLoading: false, label: LocalString.login),
+        Obx(
+          () => LoadingButtonWidget(
+              submit: () {
+                Get.offNamed(AppRoutes.PROFILE);
+              },
+              isLoading: false,
+              label: loginController.isLogin.value
+                  ? LocalString.login
+                  : LocalString.signUp),
+        )
       ],
     );
   }

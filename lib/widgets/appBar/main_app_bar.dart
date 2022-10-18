@@ -11,7 +11,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> actions;
 
   @override
-  Size get preferredSize => Size.fromHeight(70.h);
+  Size get preferredSize => Size.fromHeight(80.h);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,8 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: EdgeInsets.only(
         left: 10.w,
         right: 10.w,
-        top: 30.h,
+        top: 50.h,
+        bottom: 5.h
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -32,17 +33,15 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                height: 39.h,
-                width: 170.w,
-                color: Colors.white,
-                child: Assets.svg.app.logoApp.svg(height: 39.h, width: 170.w)),
-            ...actions
-          ]),
+      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Container(
+            height: 39.h,
+            width: 170.w,
+            color: Colors.white,
+            child: Assets.svg.app.logoApp.svg(height: 39.h, width: 170.w)),
+        const Spacer(),
+        ...actions
+      ]),
     );
   }
 }

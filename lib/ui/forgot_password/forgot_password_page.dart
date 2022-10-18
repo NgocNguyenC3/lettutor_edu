@@ -40,10 +40,4 @@ class ForgotPasswordPage extends BasePage<ForgotPasswordController> {
       ),
     );
   }
-
-  @override
-  Widget buildActionView(BuildContext context) {
-    return const SizedBox();
-  }
 }
-

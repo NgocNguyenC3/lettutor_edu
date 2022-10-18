@@ -24,7 +24,7 @@ class LettutorCloneApp extends GetWidget<AppController> {
             translations: Get.find<LocalizationService>(),
             locale: controller.locale.value,
             theme: controller.themeData.value,
-            initialRoute: AppRoutes.FORGOT_PASSWORD,
+            initialRoute: AppRoutes.LOGIN,
             defaultTransition: Transition.rightToLeft,
             transitionDuration: const Duration(milliseconds: 200),
             localizationsDelegates: const [

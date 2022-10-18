@@ -12,12 +12,14 @@ TextFormField baseTextField(
     bool readOnly = false,
     bool isObscure = false,
     bool isPhone = false,
+    int maxLine = 1,
     int? maxLength,
-    InkWell? icon,
+    Widget? icon,
     FormFieldValidator<String>? validator}) {
   return TextFormField(
     onTap: onTap,
     readOnly: readOnly,
+    maxLines: maxLine,
     inputFormatters: [
       LengthLimitingTextInputFormatter(maxLength),
     ],

@@ -1,14 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/gen/colors.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
+import 'package:lettutor_edu_clone/ui/login/login_controller.dart';
 import 'package:lettutor_edu_clone/widgets/icon/circle_icon_widget.dart';
 
 class SignUpArea extends StatelessWidget {
-  const SignUpArea({
+  late LoginController loginController;
+
+  SignUpArea({
     Key? key,
+    required this.loginController,
   }) : super(key: key);
 
   @override
@@ -52,25 +59,29 @@ class SignUpArea extends StatelessWidget {
           SizedBox(
             height: 25.h,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                LocalString.loginNotAMember,
-                style: text14,
-              ),
-              SizedBox(
-                width: 1.w,
-              ),
-              InkWell(
-                onTap: () {},
-                child: Text(
-                  LocalString.signUp,
-                  style: text14.copyWith(color: ColorName.primaryColor),
-                ),
-              ),
-            ],
-          ),
+          Obx(() => Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    LocalString.loginNotAMember,
+                    style: text14,
+                  ),
+                  SizedBox(
+                    width: 1.w,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      loginController.changeLogin();
+                    },
+                    child: Text(
+                      loginController.isLogin.value
+                          ? LocalString.signUp
+                          : LocalString.login,
+                      style: text14.copyWith(color: ColorName.primaryColor),
+                    ),
+                  ),
+                ],
+              ))
         ],
       ),
     );

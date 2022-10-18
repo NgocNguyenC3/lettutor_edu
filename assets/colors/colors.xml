@@ -19,4 +19,5 @@
     <color name="redColor">#FF0022</color>
     <color name="textGreyColor">#777777</color>
     <color name="orangeColor">#FB5427</color>
+    <color name="greyColor">#F5F6FA</color>
 </resources>

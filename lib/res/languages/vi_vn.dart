@@ -9,6 +9,7 @@ final Map<String, String> viVN = {
   'forgot.password.title': 'Đặt lại mật khẩu',
   'forgot.password.sub.title':
       'Vui lòng nhập email để tìm kiếm tài khoản của bạn.',
+  'login.already.have.account': 'Đã có tài khoản?',
 
   // Common
   'email.title': 'Email',
@@ -18,6 +19,9 @@ final Map<String, String> viVN = {
   'english': 'Tiếng anh',
   'viet.nam': 'Tiếng việt',
   'confirm': 'Xác nhận',
+  'log.out': 'Đăng xuất',
+  'account': 'Tài khoản',
+  'save': 'Lưu',
 
   // Warning
   'warning.empty.email': 'Vui lòng nhập Email',
@@ -26,4 +30,26 @@ final Map<String, String> viVN = {
   //'warning.wrong.password': 'Email không phù hợp',
   'warning.login.fail':
       'Đăng nhập thất bại! Bạn đã nhập sai email hoặc mật khẩu',
+
+  // drawer
+  'drawer.buy.lesson': 'Mua buổi học',
+  'drawer.change.password': 'Đổi mật khẩu',
+  'drawer.tutor': 'Gia sư',
+  'drawer.schedule': 'Lịch Học',
+  'drawer.history': 'Lịch sử',
+  'drawer.courses': 'Khoá học',
+  'drawer.my.course': 'Khóa học của tôi',
+  'drawer.become.a.tutor': 'Đăng ký làm gia sư',
+
+  //Profile
+  'profile.others.review': 'Người khác đánh giá bạn',
+  'profile.account.id': 'ID:',
+  'profile.name': 'Tên',
+  'profile.email.address': 'Địa chỉ email',
+  'profile.country': 'Quốc gia',
+  'profile.phone': 'Số điện thoại',
+  'profile.birthday': 'Ngày sinh',
+  'profile.my.level': 'Trình độ',
+  'profile.want.learn': 'Muốn học',
+  'profile.study.schedule': 'Lịch học',
 };

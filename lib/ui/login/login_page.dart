@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/ui/base/base_page.dart';
@@ -31,21 +32,20 @@ class LoginPage extends BasePage<LoginController> {
                 SizedBox(
                   height: 15.h,
                 ),
-                const InputFieldArea(),
+                InputFieldArea(
+                  loginController: controller,
+                ),
                 SizedBox(
                   height: 25.h,
                 ),
-                const SignUpArea()
+                SignUpArea(
+                  loginController: controller,
+                )
               ],
             ),
           )
         ],
       ),
     );
-  }
-
-  @override
-  Widget buildActionView(BuildContext context) {
-    return const SizedBox();
   }
 }
