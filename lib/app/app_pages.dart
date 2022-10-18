@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_binding.dart';
+import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_page.dart';
 import 'package:lettutor_edu_clone/ui/forgot_password/forgot_password_binding.dart';
 import 'package:lettutor_edu_clone/ui/forgot_password/forgot_password_page.dart';
 import 'package:lettutor_edu_clone/ui/login/login_binding.dart';
@@ -12,6 +14,7 @@ class AppRoutes {
   static String LOGIN = '/login';
   static String FORGOT_PASSWORD = '/forgot_password';
   static String PROFILE = '/profile';
+  static String DASHBOARD = '/dashboard';
 }
 
 class AppPages {
@@ -28,5 +31,9 @@ class AppPages {
         name: AppRoutes.PROFILE,
         page: () => ProfilePage(),
         binding: ProfileBinding()),
+    GetPage(
+        name: AppRoutes.DASHBOARD,
+        page: () => DashBoardPage(),
+        binding: DashBoardBinding()),
   ];
 }

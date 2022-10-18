@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
@@ -21,17 +22,22 @@ class DrawerPage extends StatelessWidget {
       padding: EdgeInsets.only(top: 20.h),
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Row(
-          children: [
-            CircleBox(size: 25, child: Assets.images.img.image()),
-            SizedBox(
-              width: 15.w,
-            ),
-            Text(
-              'Long Long',
-              style: text18.copyWith(fontWeight: FontWeight.w600),
-            ),
-          ],
+        InkWell(
+          onTap: () {
+            Get.offNamed(AppRoutes.PROFILE);
+          },
+          child: Row(
+            children: [
+              CircleBox(size: 25, child: Assets.images.img.image()),
+              SizedBox(
+                width: 15.w,
+              ),
+              Text(
+                'Long Long',
+                style: text18.copyWith(fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
         ),
         listTitle(
             iconData: Icons.book,
@@ -76,7 +82,7 @@ class DrawerPage extends StatelessWidget {
       required String named}) {
     return InkWell(
       onTap: () {
-        //Get.offNamed(named);
+        Get.offNamed(named);
       },
       child: Row(
         children: [

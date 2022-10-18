@@ -22,6 +22,7 @@ final Map<String, String> viVN = {
   'log.out': 'Đăng xuất',
   'account': 'Tài khoản',
   'save': 'Lưu',
+  'book': 'Đặt lịch',
 
   // Warning
   'warning.empty.email': 'Vui lòng nhập Email',
@@ -52,4 +53,19 @@ final Map<String, String> viVN = {
   'profile.my.level': 'Trình độ',
   'profile.want.learn': 'Muốn học',
   'profile.study.schedule': 'Lịch học',
+
+  //DashBoard
+  'dash.board.up.coming': 'Buổi học sắp diễn ra',
+  'dash.board.enter.room': 'Vào lớp học',
+  'dash.board.total.time': 'Tổng số giờ bạn đã học là',
+  'dash.board.find.tutor': 'Tìm kiếm gia sư',
+  'dash.board.enter.tutor.name': 'Nhập tên gia sư',
+  'dash.board.tutor.nation': 'Chọn quốc tịch gia sư',
+  'dash.board.select.day': 'Chọn một ngày',
+  'dash.board.start.time': 'Giờ bắt đầu',
+  'dash.board.end.time': 'Giờ kết thúc',
+  'dash.board.reset.filter': 'Đặt lại bộ tìm kiếm',
+  'dash.board.recommend.tutor': 'Gia sư được đề xuất',
+  'dash.board.no.review': 'Chưa có đánh giá',
+  'dash.board.select.available.time': 'Chọn thời gian dạy kèm có lịch trống:',
 };
