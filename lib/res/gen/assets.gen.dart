@@ -21,6 +21,8 @@ class $AssetsImagesGen {
 
   AssetGenImage get imageLogin => const AssetGenImage('assets/images/image_login.png');
   AssetGenImage get img => const AssetGenImage('assets/images/img.jpg');
+  AssetGenImage get imgCourse1 => const AssetGenImage('assets/images/img_course1.png');
+  AssetGenImage get imgCourse2 => const AssetGenImage('assets/images/img_course2.png');
 }
 
 class $AssetsSvgGen {
@@ -28,6 +30,7 @@ class $AssetsSvgGen {
 
   $AssetsSvgAppGen get app => const $AssetsSvgAppGen();
   $AssetsSvgCommonGen get common => const $AssetsSvgCommonGen();
+  $AssetsSvgCourseGen get course => const $AssetsSvgCourseGen();
   $AssetsSvgLoginGen get login => const $AssetsSvgLoginGen();
 }
 
@@ -42,6 +45,12 @@ class $AssetsSvgCommonGen {
 
   SvgGenImage get iconUs => const SvgGenImage('assets/svg/common/icon_us.svg');
   SvgGenImage get iconVn => const SvgGenImage('assets/svg/common/icon_vn.svg');
+}
+
+class $AssetsSvgCourseGen {
+  const $AssetsSvgCourseGen();
+
+  SvgGenImage get iconCourse => const SvgGenImage('assets/svg/course/icon_course.svg');
 }
 
 class $AssetsSvgLoginGen {

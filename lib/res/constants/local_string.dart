@@ -27,13 +27,15 @@ class LocalString {
   static final String account = 'account'.tr;
   static final String save = 'save'.tr;
   static final String book = 'book'.tr;
-
   static final String favorite = 'favorite'.tr;
   static final String report = 'report'.tr;
   static final String reviews = 'reviews'.tr;
   static final String languages = 'languages'.tr;
   static final String specialties = 'specialties'.tr;
   static final String interests = 'interests'.tr;
+  static final String course = 'course'.tr;
+  static final String eBook = 'e.book'.tr;
+  static final String ieBook = 'i.e.book'.tr;
 
   // Warning
   static final String warningEmptyEmail = 'warning.empty.email'.tr;
@@ -89,4 +91,11 @@ class LocalString {
   static final String tutorDetailSuggestedCourse =
       'tutor.detail.suggested.course'.tr;
   static final String tutorDetailEx = 'tutor.detail.ex'.tr;
+
+  //course
+  static final String courseTitle = 'course.title'.tr;
+  static final String courseContent = 'course.content'.tr;
+  static final String courseLevel = 'course.level'.tr;
+  static final String courseSortlv = 'course.sort.lv'.tr;
+  static final String courseCategory = 'course.category'.tr;
 }

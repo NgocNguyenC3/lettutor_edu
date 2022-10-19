@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
@@ -94,9 +96,14 @@ class BaseInforTutor extends StatelessWidget {
                 iconData: Icons.report,
                 title: LocalString.report,
               ),
-              IconText(
-                iconData: Icons.star,
-                title: LocalString.reviews,
+              InkWell(
+                onTap: () {
+                  Get.toNamed(AppRoutes.REVIEW);
+                },
+                child: IconText(
+                  iconData: Icons.star,
+                  title: LocalString.reviews,
+                ),
               ),
             ],
           )
