@@ -5,6 +5,8 @@ import 'package:lettutor_edu_clone/ui/change_password/change_password_binding.da
 import 'package:lettutor_edu_clone/ui/change_password/change_password_page.dart';
 import 'package:lettutor_edu_clone/ui/course/course_binding.dart';
 import 'package:lettutor_edu_clone/ui/course/course_page.dart';
+import 'package:lettutor_edu_clone/ui/course_detail/course_detail_binding.dart';
+import 'package:lettutor_edu_clone/ui/course_detail/course_detail_page.dart';
 import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_binding.dart';
 import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_page.dart';
 import 'package:lettutor_edu_clone/ui/forgot_password/forgot_password_binding.dart';
@@ -26,7 +28,8 @@ class AppRoutes {
   static String CHANGE_PASSWORD = '/change_password';
   static String TUTOR_DETAIL = '/tutor_detail';
   static String COURSE = '/course';
-  static String REVIEW = '/review';
+  static String REVIEW = '/tutor_detail/review';
+  static String COURSE_DETAIL = '/course/detail';
 }
 
 class AppPages {
@@ -63,5 +66,9 @@ class AppPages {
         name: AppRoutes.REVIEW,
         page: () => ReviewPage(),
         binding: ReviewBinding()),
+    GetPage(
+        name: AppRoutes.COURSE_DETAIL,
+        page: () => CourseDetailPage(),
+        binding: CourseDetailBinding()),
   ];
 }

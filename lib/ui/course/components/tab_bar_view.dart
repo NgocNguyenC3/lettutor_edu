@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/app/app_pages.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
@@ -61,30 +62,42 @@ class TabBarview extends StatelessWidget {
               style: text26,
             ),
             SizedBox(
-              height: 10.h,
+              height: 20.h,
             ),
             BoxShadowContainer(
+              onTap: () {
+                Get.toNamed(AppRoutes.COURSE_DETAIL);
+              },
               width: 280.w,
               padding: EdgeInsets.only(bottom: 20.h),
               child: CourseItem(
                 mainTitle: 'Life in the Internet Age',
                 subTitle:
                     'Lets discuss how technology is changing the way we live',
-                bottomTitle: 'Intermediate 9 lessons',
+                bottomWidget: Text(
+                  'Intermediate 9 lessons',
+                  style: text14,
+                ),
                 image: Assets.images.imgCourse1.image(fit: BoxFit.cover),
               ),
             ),
             SizedBox(
-              height: 15.h,
+              height: 30.h,
             ),
             BoxShadowContainer(
+              onTap: () {
+                Get.toNamed(AppRoutes.COURSE_DETAIL);
+              },
               width: 280.w,
               padding: EdgeInsets.only(bottom: 20.h),
               child: CourseItem(
                 mainTitle: 'Life in the Internet Age',
                 subTitle:
                     'Lets discuss how technology is changing the way we live',
-                bottomTitle: 'Intermediate 9 lessons',
+                bottomWidget: Text(
+                  'Intermediate 9 lessons',
+                  style: text14,
+                ),
                 image: Assets.images.imgCourse2.image(fit: BoxFit.cover),
               ),
             ),
