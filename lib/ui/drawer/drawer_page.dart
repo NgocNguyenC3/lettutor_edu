@@ -49,11 +49,11 @@ class DrawerPage extends StatelessWidget {
         listTitle(
             iconData: Icons.event_available,
             title: LocalString.drawerSchedule,
-            named: ''),
+            named: AppRoutes.SCHEDULE),
         listTitle(
             iconData: Icons.history,
             title: LocalString.drawerHistory,
-            named: ''),
+            named: AppRoutes.HISTORY),
         listTitle(
             iconData: Icons.school,
             title: LocalString.drawerCourses,

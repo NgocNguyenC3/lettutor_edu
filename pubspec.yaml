@@ -69,3 +69,5 @@ flutter:
     - assets/svg/profile/
     - assets/svg/app/
     - assets/svg/course/
+    - assets/svg/schedule/
+    - assets/svg/history/

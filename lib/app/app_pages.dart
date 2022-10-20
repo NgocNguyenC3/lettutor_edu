@@ -11,12 +11,16 @@ import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_binding.dart';
 import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_page.dart';
 import 'package:lettutor_edu_clone/ui/forgot_password/forgot_password_binding.dart';
 import 'package:lettutor_edu_clone/ui/forgot_password/forgot_password_page.dart';
+import 'package:lettutor_edu_clone/ui/history/history_binding.dart';
+import 'package:lettutor_edu_clone/ui/history/history_page.dart';
 import 'package:lettutor_edu_clone/ui/login/login_binding.dart';
 import 'package:lettutor_edu_clone/ui/login/login_page.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_binding.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_page.dart';
 import 'package:lettutor_edu_clone/ui/review/review_binding.dart';
 import 'package:lettutor_edu_clone/ui/review/review_page.dart';
+import 'package:lettutor_edu_clone/ui/schedule/schedule_binding.dart';
+import 'package:lettutor_edu_clone/ui/schedule/schedule_page.dart';
 import 'package:lettutor_edu_clone/ui/tutor_detail/tutor_detail_binding.dart';
 import 'package:lettutor_edu_clone/ui/tutor_detail/tutor_detail_page.dart';
 
@@ -30,6 +34,8 @@ class AppRoutes {
   static String COURSE = '/course';
   static String REVIEW = '/tutor_detail/review';
   static String COURSE_DETAIL = '/course/detail';
+  static String SCHEDULE = '/schedule';
+  static String HISTORY = '/history';
 }
 
 class AppPages {
@@ -70,5 +76,13 @@ class AppPages {
         name: AppRoutes.COURSE_DETAIL,
         page: () => CourseDetailPage(),
         binding: CourseDetailBinding()),
+    GetPage(
+        name: AppRoutes.SCHEDULE,
+        page: () => SchedulePage(),
+        binding: ScheduleBinding()),
+    GetPage(
+        name: AppRoutes.HISTORY,
+        page: () => HistoryPage(),
+        binding: HistoryBinding()),
   ];
 }

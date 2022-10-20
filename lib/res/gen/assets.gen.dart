@@ -31,7 +31,9 @@ class $AssetsSvgGen {
   $AssetsSvgAppGen get app => const $AssetsSvgAppGen();
   $AssetsSvgCommonGen get common => const $AssetsSvgCommonGen();
   $AssetsSvgCourseGen get course => const $AssetsSvgCourseGen();
+  $AssetsSvgHistoryGen get history => const $AssetsSvgHistoryGen();
   $AssetsSvgLoginGen get login => const $AssetsSvgLoginGen();
+  $AssetsSvgScheduleGen get schedule => const $AssetsSvgScheduleGen();
 }
 
 class $AssetsSvgAppGen {
@@ -53,12 +55,24 @@ class $AssetsSvgCourseGen {
   SvgGenImage get iconCourse => const SvgGenImage('assets/svg/course/icon_course.svg');
 }
 
+class $AssetsSvgHistoryGen {
+  const $AssetsSvgHistoryGen();
+
+  SvgGenImage get iconHistory => const SvgGenImage('assets/svg/history/icon_history.svg');
+}
+
 class $AssetsSvgLoginGen {
   const $AssetsSvgLoginGen();
 
   SvgGenImage get iconFacebook => const SvgGenImage('assets/svg/login/icon_facebook.svg');
   SvgGenImage get iconGoogle => const SvgGenImage('assets/svg/login/icon_google.svg');
   SvgGenImage get iconPhone => const SvgGenImage('assets/svg/login/icon_phone.svg');
+}
+
+class $AssetsSvgScheduleGen {
+  const $AssetsSvgScheduleGen();
+
+  SvgGenImage get iconSchedule => const SvgGenImage('assets/svg/schedule/icon_schedule.svg');
 }
 
 class Assets {
