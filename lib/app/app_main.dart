@@ -12,6 +12,7 @@ class LettutorCloneApp extends GetWidget<AppController> {
   Widget build(BuildContext context) {
     return Obx(
       () {
+        print(controller.locale.value);
         return GestureDetector(
           onTap: () {
             FocusManager.instance.primaryFocus?.unfocus();
@@ -21,7 +22,7 @@ class LettutorCloneApp extends GetWidget<AppController> {
             debugShowCheckedModeBanner: false,
             useInheritedMediaQuery: true,
             getPages: AppPages.pages,
-            translations: Get.find<LocalizationService>(),
+            translations: LocalizationService(),
             locale: controller.locale.value,
             theme: controller.themeData.value,
             initialRoute: AppRoutes.LOGIN,
@@ -32,8 +33,10 @@ class LettutorCloneApp extends GetWidget<AppController> {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            fallbackLocale: const Locale('en'),
-            supportedLocales: LocalizationService.supportLocale,
+            supportedLocales: const [
+              Locale('vi'),
+              Locale('en'),
+            ],
           ),
         );
       },

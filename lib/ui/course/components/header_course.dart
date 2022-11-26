@@ -25,7 +25,7 @@ class HeaderCourse extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CircleBox(
-            size: 110.w, child: Assets.svg.course.iconCourse.svg()),
+            size: 110.w, child: Assets.svg.course.iconCourse.svg(fit: BoxFit.cover)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.start,

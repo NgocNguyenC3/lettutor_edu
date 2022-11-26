@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
+import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
@@ -36,7 +37,7 @@ class InputFieldArea extends StatelessWidget {
         ),
         baseTextField(
             onChanged: (value) {},
-            controller: null,
+            controller: loginController.controllers[emailField],
             hintText: 'email@example.com'),
         SizedBox(
           height: 15.h,
@@ -51,7 +52,7 @@ class InputFieldArea extends StatelessWidget {
         ),
         baseTextField(
             onChanged: (value) {},
-            controller: null,
+            controller: loginController.controllers[passwordField],
             hintText: '',
             icon: InkWell(
               onTap: () {},
@@ -76,7 +77,7 @@ class InputFieldArea extends StatelessWidget {
         Obx(
           () => LoadingButtonWidget(
               submit: () {
-                Get.offNamed(AppRoutes.DASHBOARD);
+                loginController.onClickLogIn();
               },
               isLoading: false,
               label: loginController.isLogin.value

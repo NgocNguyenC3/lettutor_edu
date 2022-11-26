@@ -7,6 +7,7 @@ import 'package:lettutor_edu_clone/res/languages/en_us.dart';
 import 'package:lettutor_edu_clone/res/languages/vi_vn.dart';
 
 class LocalizationService extends Translations {
+  
   @override
   Map<String, Map<String, String>> get keys => {"vi": viVN, "en": enUS};
 
@@ -14,11 +15,6 @@ class LocalizationService extends Translations {
 
   static const VI_VN = "vi";
   static const EN_US = "en";
-
-  static const supportLocale = [
-    Locale(VI_VN),
-    Locale(EN_US),
-  ];
 
   String _language = VI_VN;
 

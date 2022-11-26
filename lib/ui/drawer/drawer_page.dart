@@ -19,11 +19,11 @@ class DrawerPage extends StatelessWidget {
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         InkWell(
           onTap: () {
-            Get.offNamed(AppRoutes.PROFILE);
+            Get.offNamed(AppRoutes.PROFILE, preventDuplicates: false);
           },
           child: Row(
             children: [
-              CircleBox(size: 25, child: Assets.images.img.image()),
+              CircleBox(size: 25, child: Assets.images.img.image(fit: BoxFit.cover)),
               SizedBox(
                 width: 15.w,
               ),
@@ -66,7 +66,10 @@ class DrawerPage extends StatelessWidget {
             iconData: Icons.hail,
             title: LocalString.drawerBecomeAtutor,
             named: ''),
-        listTitle(iconData: Icons.logout, title: LocalString.logout, named: AppRoutes.LOGIN),
+        listTitle(
+            iconData: Icons.logout,
+            title: LocalString.logout,
+            named: AppRoutes.LOGIN),
       ]),
     );
   }
@@ -78,7 +81,7 @@ class DrawerPage extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (named.isNotEmpty) {
-          Get.offNamed(named);
+          Get.offNamed(named, preventDuplicates: false);
         }
       },
       child: Row(

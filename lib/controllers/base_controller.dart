@@ -25,6 +25,7 @@ abstract class BaseController<C> extends GetxController {
   Future<void> changeNation(String languageCode) async {
     await _localizationService.updateLanguage(languageCode);
     locale.value = _localizationService.getLocale;
+    _appController.locale.value = _localizationService.getLocale;
   }
 
   handleOnTapDrawer() {

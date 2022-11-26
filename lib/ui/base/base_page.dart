@@ -29,7 +29,10 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
                 onTap: () {
                   controller.handleOnTapDrawer();
                 },
-                child: Icon(Icons.list, size: 20.w,),
+                child: Icon(
+                  Icons.list,
+                  size: 20.w,
+                ),
               )
           ],
           body: IndexedStack(
