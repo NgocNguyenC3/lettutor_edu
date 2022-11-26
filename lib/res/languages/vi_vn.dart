@@ -1,4 +1,5 @@
 final Map<String, String> viVN = {
+  'notification': 'Thông báo',
   // Login
   'login.title': 'Đăng nhập',
   'login.sub.title':
@@ -117,14 +118,34 @@ final Map<String, String> viVN = {
   'schedule.direct': 'Nhắn tin',
   'schedule.request': 'Yêu cầu cho buổi học',
   'schedule.edit.request': 'Chỉnh sửa yêu cầu',
-  'schedule.request.content': 'Hiện tại không có yêu cầu cho lớp học này. Xin vui lòng viết ra bất kỳ yêu cầu nào cho giáo viên nếu có.',
+  'schedule.request.content':
+      'Hiện tại không có yêu cầu cho lớp học này. Xin vui lòng viết ra bất kỳ yêu cầu nào cho giáo viên nếu có.',
   'schedule.go.meeting': 'Vào buổi học',
-
 
   // History
   'history.title': 'Đây là danh sách các bài học bạn đã tham gia',
-  'history.sub.title': 'Bạn có thể xem lại thông tin chi tiết về các buổi học đã tham gia đã tham gia',
+  'history.sub.title':
+      'Bạn có thể xem lại thông tin chi tiết về các buổi học đã tham gia đã tham gia',
   'history.lesson.time': 'Thời gian bài học:',
   'history.no.request': 'Không có yêu cầu cho buổi học',
   'history.tutor.rv': 'Gia sư chưa có đánh giá',
+
+  //
+
+  'usernameRequired':
+      'Tài khoản không chứa kí tự đặc biệt,\nkhông ngắn hơn 5 kí tự và dài không quá 25 kí tự\nKí tự đầu tiên phải là chữ',
+  'passwordRegisterRequired':
+      'Chiều dài mật khẩu tối thiểu 6 kí tự,\ntối đa 30 kí tự',
+  'repasswordRegisterRequired': 'Mật khẩu không khớp',
+  'lastNameRegisterRequired':
+      'Không hợp lệ\nChỉ gồm chữ và số\nTối đa 20 kí tự',
+  'firstNameRegisterRequired':
+      'Không hợp lệ\nChỉ gồm chữ và số\nTối đa 20 kí tự',
+  'emailRegisterRequired': 'Không đúng định dạng email',
+  'passwordTooShort': 'Mật khẩu quá ngắn',
+  'warningCheckField': 'Mời kiểm tra lại thông tin nhập',
+  'warningPhoneNumber': 'Số không hợp lệ',
+  'charAndNumRequirement': 'Yêu cầu chữ và số',
+  'updatePhoneRequirement': 'Mời cập nhật số điện thoại',
+  'addressRequirement': 'Sai định dạng địa chỉ',
 };

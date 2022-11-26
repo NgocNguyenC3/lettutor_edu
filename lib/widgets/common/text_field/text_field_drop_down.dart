@@ -40,7 +40,7 @@ class _DropDownTextFormFieldState extends State<DropDownTextFormField> {
               baseTextField(
                   onChanged: (value) {},
                   controller: null,
-                  isHaveBorder: false,
+                  isOutline: false,
                   icon: const Icon(Icons.expand_more),
                   hintText: widget.hintText),
             ]),

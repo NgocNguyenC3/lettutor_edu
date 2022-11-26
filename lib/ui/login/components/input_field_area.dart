@@ -9,6 +9,7 @@ import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 import 'package:lettutor_edu_clone/ui/login/login_controller.dart';
+import 'package:lettutor_edu_clone/util/validator.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
 
@@ -38,6 +39,9 @@ class InputFieldArea extends StatelessWidget {
         baseTextField(
             onChanged: (value) {},
             controller: loginController.controllers[emailField],
+            isOutline: true,
+            validator: loginController.validator(
+                key: emailField, func: validatorEmail),
             hintText: 'email@example.com'),
         SizedBox(
           height: 15.h,
@@ -50,14 +54,19 @@ class InputFieldArea extends StatelessWidget {
         SizedBox(
           height: 8.h,
         ),
-        baseTextField(
-            onChanged: (value) {},
-            controller: loginController.controllers[passwordField],
-            hintText: '',
-            icon: InkWell(
-              onTap: () {},
-              child: const Icon(Icons.visibility, size: 20),
-            )),
+        Obx(
+          () => baseTextField(
+              onChanged: (value) {},
+              controller: loginController.controllers[passwordField],
+              validator: loginController.validator(
+                  key: passwordField, func: validatorPassword),
+              hintText: '',
+              isOutline: true,
+              isObscure: loginController.isHide.value,
+              icon: suffixIconRegister(
+                  onTap: loginController.changeHide,
+                  rxPassword: loginController.isHide)),
+        ),
         SizedBox(
           height: 10.h,
         ),

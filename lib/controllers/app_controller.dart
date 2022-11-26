@@ -3,17 +3,19 @@ import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/app/app_setup.dart';
 import 'package:lettutor_edu_clone/app/app_storage.dart';
 import 'package:lettutor_edu_clone/data/api_constants.dart';
+import 'package:lettutor_edu_clone/data/models/user.dart';
 import 'package:lettutor_edu_clone/data/rest_client.dart';
 import 'package:lettutor_edu_clone/res/languages/localization_service.dart';
 import 'package:lettutor_edu_clone/res/theme/app_theme.dart';
 import 'package:lettutor_edu_clone/res/theme/theme_service.dart';
 
 class AppController extends GetxController {
+  Environment? env;
+
   late Rx<Locale?> locale;
   late Rx<ThemeData?> themeData;
-
-  Environment? env;
-  Rx<AuthState> authState = AuthState.unauthorized.obs;
+  final Rx<UserModel?> userModel = UserModel(birthday: DateTime(1990)).obs;
+  final Rx<AuthState> authState = AuthState.unauthorized.obs;
 
   init(Environment environment) async {
     env = environment;
@@ -23,7 +25,7 @@ class AppController extends GetxController {
     setupApp();
     await initTheme(appStorage);
     await initLanguage();
-    await initAuth();
+    await initApi(null);
   }
 
   Future<void> initStorage() async {
@@ -57,19 +59,6 @@ class AppController extends GetxController {
         themeData = appThemeData[themeService.getAppTheme(value)].obs;
       }
     });
-  }
-
-  Future<void> initAuth() async {
-    final storage = Get.find<AppStorage>();
-
-    String? accessToken = await storage.getToken();
-    await initApi(accessToken);
-    if (accessToken != null && accessToken.isNotEmpty) {
-      //await Get.find<UserRepository>().getMe(userId: user?.id ?? "");
-      authState.value = AuthState.authorized;
-    } else {
-      authState.value = AuthState.unauthorized;
-    }
   }
 
   initApi(String? accessToken) async {

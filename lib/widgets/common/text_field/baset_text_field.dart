@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
@@ -7,21 +8,24 @@ import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 TextFormField baseTextField(
     {required Function(String) onChanged,
     required TextEditingController? controller,
-    required String hintText,
+    String hintText = '',
     void Function()? onTap,
     bool readOnly = false,
     bool isObscure = false,
     bool isPhone = false,
-    bool isHaveBorder = true,
-    int maxLine = 1,
     int? maxLength,
+    int maxLine = 1,
     Widget? icon,
-    double radius = 5.0,
+    InputBorder? enabledBorder,
+    InputBorder? focusedBorder,
+    InputBorder? errorBorder,
+    InputBorder? focusedErrorBorder,
+    bool isOutline = false,
     FormFieldValidator<String>? validator}) {
   return TextFormField(
     onTap: onTap,
+
     readOnly: readOnly,
-    maxLines: maxLine,
     inputFormatters: [
       LengthLimitingTextInputFormatter(maxLength),
     ],
@@ -35,34 +39,59 @@ TextFormField baseTextField(
     style: text12,
     //focusNode: focusNode,
     onChanged: onChanged,
+    maxLines: maxLine,
     decoration: InputDecoration(
-      hintStyle: text12.copyWith(color: greyColor),
+      hintStyle: text12.copyWith(color: Colors.grey),
       filled: true,
       fillColor: whiteColor,
       hintText: hintText,
-      suffixIcon: icon,
-      focusedBorder: isHaveBorder
-          ? underLineIntputBorder(
-              width: 2, color: greyBorderColor, radius: radius)
-          : null,
-      enabledBorder: isHaveBorder
-          ? underLineIntputBorder(
-              width: 2, color: greyBorderColor, radius: radius)
-          : null,
-      // contentPadding: isHaveBorder
-      //     ? EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h)
-      //     : null,
+      suffixIconConstraints: BoxConstraints(minHeight: 20.h, minWidth: 30.w),
+      suffixIcon: Padding(
+        padding: EdgeInsets.only(right: 8.0.w),
+        child: icon,
+      ),
+      focusedBorder: focusedBorder ??
+          (isOutline
+              ? outLineInputBorder(width: 1, color: greyBorderColor)
+              : underLineIntputBorder(width: 1, color: greyBorderColor)),
+      enabledBorder: enabledBorder ??
+          (isOutline
+              ? outLineInputBorder(width: 1, color: greyBorderColor)
+              : underLineIntputBorder(width: 1, color: greyBorderColor)),
+      errorBorder: errorBorder ??
+          (isOutline
+              ? outLineInputBorder(width: 1, color: Colors.red)
+              : underLineIntputBorder(width: 1, color: Colors.red)),
+      focusedErrorBorder: focusedErrorBorder ??
+          (isOutline
+              ? outLineInputBorder(width: 1, color: Colors.red)
+              : underLineIntputBorder(width: 1, color: Colors.red)),
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: 15.w,
+        vertical: 15.h,
+      ),
       isDense: true,
     ),
   );
 }
 
-OutlineInputBorder underLineIntputBorder(
-    {required double width, required color, required radius}) {
+UnderlineInputBorder underLineIntputBorder(
+    {required double width, required color}) {
+  return UnderlineInputBorder(
+    borderSide: BorderSide(color: color, width: width),
+  );
+}
+
+OutlineInputBorder outLineInputBorder({required double width, required color}) {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(radius),
-    borderSide: BorderSide(
-      color: color,
-    ),
+    borderSide: BorderSide(color: color, width: width),
+  );
+}
+
+InkWell suffixIconRegister(
+    {required void Function()? onTap, required RxBool rxPassword}) {
+  return InkWell(
+    onTap: onTap,
+    child: Icon(rxPassword.value ? Icons.visibility : Icons.visibility_off),
   );
 }

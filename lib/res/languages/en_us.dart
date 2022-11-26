@@ -1,4 +1,5 @@
 final Map<String, String> enUS = {
+  'notification': 'Notification',
   // Login
   'login.title': 'Say hello to your English tutors',
   'login.sub.title':
@@ -120,11 +121,30 @@ final Map<String, String> enUS = {
   'schedule.request.content':
       'Currently there are no requests for this class. Please write down any requests for the teacher.',
   'schedule.go.meeting': 'Go to meeting',
-  
+
   // History
   'history.title': 'The following is a list of lessons you have attended',
-  'history.sub.title': 'You can review the details of the lessons you have attended',
+  'history.sub.title':
+      'You can review the details of the lessons you have attended',
   'history.lesson.time': 'Lesson Time:',
   'history.no.request': 'No request for lesson',
   'history.tutor.rv': 'Tutor havent reviewed yet',
+
+  // Register requirement
+  'usernameRequired':
+      'Account contains no special characters,\nno shorter than 5 and longer than 25 characters\nThe first character must be a letter',
+  'passwordRegisterRequired':
+      'Password length Minimum 6 characters,\nup to 30 characters',
+  'repasswordRegisterRequired': 'Password does not match',
+  'lastNameRegisterRequired':
+      'Invalid,\nalphanumeric only,\nmaximum 20 characters',
+  'firstNameRegisterRequired':
+      'Invalid,\nalphanumeric only,\nmaximum 20 characters',
+  'emailRegisterRequired': 'Incorrect email format',
+  'passwordTooShort': 'Password is too short',
+  'warningCheckField': 'Please check the input information again',
+  'warningPhoneNumber': 'Invalid number',
+  'charAndNumRequirement': 'Requires letters and numbers',
+  'updatePhoneRequirement': 'Please update your phone number',
+  'addressRequirement': 'Wrong address format',
 };

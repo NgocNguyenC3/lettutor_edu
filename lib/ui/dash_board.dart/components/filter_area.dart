@@ -10,6 +10,7 @@ import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_controller.dart
 
 import 'package:lettutor_edu_clone/widgets/common/text/text_container.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
+import 'package:lettutor_edu_clone/widgets/common/text_field/old_text_field.dart';
 
 
 class FilterTutorArea extends StatelessWidget {
@@ -35,7 +36,7 @@ class FilterTutorArea extends StatelessWidget {
         ),
         SizedBox(
           width: Get.width / 2 + 25.w,
-          child: baseTextField(
+          child: oldBaseTextField(
               radius: 20.r,
               onChanged: (value) {},
               controller: null,
@@ -46,7 +47,7 @@ class FilterTutorArea extends StatelessWidget {
         ),
         SizedBox(
           width: Get.width / 2 - 25.w,
-          child: baseTextField(
+          child: oldBaseTextField(
               radius: 20.r,
               onChanged: (value) {},
               controller: null,
@@ -65,7 +66,7 @@ class FilterTutorArea extends StatelessWidget {
         ),
         SizedBox(
           width: Get.width / 2 - 15.w,
-          child: baseTextField(
+          child: oldBaseTextField(
               radius: 20.r,
               onChanged: (value) {},
               controller: null,
@@ -77,7 +78,7 @@ class FilterTutorArea extends StatelessWidget {
         ),
         SizedBox(
           width: Get.width / 4 * 3,
-          child: baseTextField(
+          child: oldBaseTextField(
               radius: 20.r,
               onChanged: (value) {},
               controller: null,

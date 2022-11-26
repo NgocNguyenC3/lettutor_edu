@@ -12,7 +12,6 @@ class LettutorCloneApp extends GetWidget<AppController> {
   Widget build(BuildContext context) {
     return Obx(
       () {
-        print(controller.locale.value);
         return GestureDetector(
           onTap: () {
             FocusManager.instance.primaryFocus?.unfocus();

@@ -22,7 +22,9 @@ dependencies:
   video_player: ^2.4.7
   flutter_localizations:
     sdk: flutter
-  easy_localization: ^3.0.1
+  sprintf: ^6.0.0
+  validators: ^3.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -64,10 +66,8 @@ flutter:
     - assets/fonts/
     - assets/svg/
     - assets/images/
-    - assets/svg/document/
     - assets/svg/login/
     - assets/svg/common/
-    - assets/svg/profile/
     - assets/svg/app/
     - assets/svg/course/
     - assets/svg/schedule/

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor_edu_clone/data/rest_client.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';

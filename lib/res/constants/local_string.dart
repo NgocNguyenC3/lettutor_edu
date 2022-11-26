@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 class LocalString {
   static final String appName = 'appName'.tr;
+  static final String notification = 'notification'.tr;
 
   // Login
   static final String loginTitle = 'login.title'.tr;
@@ -124,11 +125,27 @@ class LocalString {
   static final String scheduleEditRequest = 'schedule.edit.request'.tr;
   static final String scheduleRequestContent = 'schedule.request.content'.tr;
   static final String scheduleGotoMeeting = 'schedule.go.meeting'.tr;
-  
+
   // History
   static final String historyTitle = 'history.title'.tr;
   static final String historySubTitle = 'history.sub.title'.tr;
   static final String historyLessonTime = 'history.lesson.time'.tr;
   static final String historyNoRquest = 'history.no.request'.tr;
   static final String historyTutorHaventRv = 'history.tutor.rv'.tr;
+
+  // Register required
+  static final String usernameRegisterRequired = 'usernameRequired'.tr;
+  static final String passwordRegisterRequired = 'passwordRegisterRequired'.tr;
+  static final String repasswordRegisterRequired =
+      'repasswordRegisterRequired'.tr;
+  static final String lastNameRegisterRequired = 'lastNameRegisterRequired'.tr;
+  static final String firstNameRegisterRequired =
+      'firstNameRegisterRequired'.tr;
+  static final String emailRegisterRequired = 'emailRegisterRequired'.tr;
+  static final String passwordTooShort = 'passwordTooShort'.tr;
+  static final String warningCheckField = 'warningCheckField'.tr;
+  static final String warningPhoneNumber = 'warningPhoneNumber'.tr;
+  static final String charAndNumRequirement = 'charAndNumRequirement'.tr;
+  static final String updatePhoneRequirement = 'updatePhoneRequirement'.tr;
+  static final String addressRequirement = 'addressRequirement'.tr;
 }
