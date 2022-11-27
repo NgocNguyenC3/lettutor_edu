@@ -5,15 +5,15 @@ import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/controllers/base_controller.dart';
 import 'package:lettutor_edu_clone/data/services.dart/user_service.dart';
 import 'package:lettutor_edu_clone/res/constants/constants.dart';
-import 'package:lettutor_edu_clone/res/languages/localization_service.dart';
 import 'package:lettutor_edu_clone/util/validator.dart';
 import 'package:lettutor_edu_clone/widgets/notification/notification_bar.dart';
 
 class LoginController extends BaseController {
   final _userService = Get.find<UserService>();
 
-  final Rx<bool> isLogin = true.obs;
+  final RxBool isLogin = true.obs;
   final RxBool isHide = true.obs;
+  final RxBool loading = false.obs;
 
   final Map<String, TextEditingController> controllers = Map.fromEntries(
     [
@@ -53,14 +53,19 @@ class LoginController extends BaseController {
     }
 
     try {
+      loading.value = true;
       await _userService.logAccount(
           email: controllers[emailField]!.text,
           password: controllers[passwordField]!.text,
           isLogin: isLogin.value);
     } on DioError catch (e) {
       notificationBar(message: e.response?.data['message'], isSuccess: false);
+      loading.value = false;
       return;
     }
+    loading.value = false;
+
+    await _userService.getlanguages();
     Get.offNamed(AppRoutes.DASHBOARD);
   }
 

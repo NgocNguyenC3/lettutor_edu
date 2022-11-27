@@ -3,13 +3,19 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart' as dio;
+import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/controllers/app_controller.dart';
 import 'package:lettutor_edu_clone/data/data_exception.dart';
+import 'package:lettutor_edu_clone/data/models/user.dart';
 import 'package:lettutor_edu_clone/data/response/api_response.dart';
 import '../rest_client.dart';
 
 enum JsonType { FULL_RESPONSE, JSON_RESPONSE, BODY_BYTES, STRING_RESPONSE }
 
 abstract class BaseService {
+  final _appController = Get.find<AppController>();
+  
+
   Future<dynamic> get(String path,
       {Map<String, dynamic>? params,
       JsonType responseType = JsonType.FULL_RESPONSE}) async {
@@ -74,5 +80,14 @@ abstract class BaseService {
   String queryParam(String? id) {
     Map<String, String?> queryParams = {'status': 'ACTIVE', 'root': id};
     return jsonEncode(queryParams);
+  }
+
+  void saveUserInfo(response) {
+    _appController.userModel.value = UserModel.fromJson(response['user']);
+    RestClient.instance.setToken(response['tokens']['access']['token']);
+  }
+
+  void saveLanguages(response) {
+    _appController.saveLanguages(response);
   }
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/app/app_setup.dart';
 import 'package:lettutor_edu_clone/app/app_storage.dart';
 import 'package:lettutor_edu_clone/data/api_constants.dart';
+import 'package:lettutor_edu_clone/data/models/category.dart';
 import 'package:lettutor_edu_clone/data/models/user.dart';
 import 'package:lettutor_edu_clone/data/rest_client.dart';
 import 'package:lettutor_edu_clone/res/languages/localization_service.dart';
@@ -16,6 +17,8 @@ class AppController extends GetxController {
   late Rx<ThemeData?> themeData;
   final Rx<UserModel?> userModel = UserModel(birthday: DateTime(1990)).obs;
   final Rx<AuthState> authState = AuthState.unauthorized.obs;
+
+  Map<String, String> languagesContry = {};
 
   init(Environment environment) async {
     env = environment;
@@ -73,6 +76,23 @@ class AppController extends GetxController {
         break;
     }
     RestClient.instance.init(baseUrl, accessToken: accessToken ?? "");
+  }
+
+  logout() async {
+    userModel.value = UserModel(birthday: DateTime(1990));
+    authState.value = AuthState.unauthorized;
+    RestClient.instance.clearToken();
+    await Get.find<AppStorage>().logout();
+  }
+
+  void saveLanguages(res) {
+    final List<Category> categories = res[0]['categories'] == null
+        ? []
+        : (res[0]['categories'] as List)
+            .map((e) => Category.fromJson(e))
+            .toList();
+    languagesContry = Map.fromEntries(
+        categories.map((value) => MapEntry(value.key, value.description)));
   }
 }
 

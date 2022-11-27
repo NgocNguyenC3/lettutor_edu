@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/app/app_pages.dart';
+import 'package:lettutor_edu_clone/controllers/app_controller.dart';
+import 'package:lettutor_edu_clone/data/models/tutor.dart';
+import 'package:lettutor_edu_clone/data/models/user.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
@@ -18,17 +21,16 @@ import 'package:lettutor_edu_clone/widgets/common/text/text_container.dart';
 import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
 
 class InformationTutorContainer extends StatelessWidget {
-  double countRating;
+  final languages = Get.find<AppController>().languagesContry;
+  Tutor tutor;
   InformationTutorContainer({
     Key? key,
-    required this.countRating,
-    required this.controller,
+    required this.tutor,
   }) : super(key: key);
-
-  final DashBoardController controller;
 
   @override
   Widget build(BuildContext context) {
+    final user = tutor.user ?? UserModel(birthday: DateTime(1990));
     return Stack(
       children: [
         Padding(
@@ -50,7 +52,7 @@ class InformationTutorContainer extends StatelessWidget {
                     height: 10.h,
                   ),
                   Text(
-                    'Joan Gacer',
+                    user.name,
                     style: text20.copyWith(fontWeight: FontWeight.w600),
                   ),
                   SizedBox(
@@ -61,7 +63,7 @@ class InformationTutorContainer extends StatelessWidget {
                       Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
                       SizedBox(width: 15.w),
                       Text(
-                        'Taiwan',
+                        languages[user.country.toLowerCase()] ?? user.country,
                         style: text16,
                       ),
                     ],
@@ -69,17 +71,17 @@ class InformationTutorContainer extends StatelessWidget {
                   SizedBox(
                     height: 10.h,
                   ),
-                  countRating == 0
+                  tutor.rating == 0
                       ? Text(
                           LocalString.dashBoardNoReview,
                           style: text16.copyWith(color: Colors.grey),
                         )
                       : RatingBar.builder(
-                          initialRating: countRating,
-                          minRating: countRating,
-                          maxRating: countRating,
+                          initialRating: tutor.rating,
+                          minRating: tutor.rating,
+                          maxRating: tutor.rating,
                           direction: Axis.horizontal,
-                          allowHalfRating: true,
+                          allowHalfRating: false,
                           itemCount: 5,
                           itemSize: 20,
                           itemPadding:
@@ -98,7 +100,8 @@ class InformationTutorContainer extends StatelessWidget {
                     spacing: 5.w,
                     runSpacing: 10.h,
                     children: [
-                      ...controller.listType
+                      ...tutor.specialties
+                          .split(',')
                           .map((e) => TextContainer(
                                 title: e,
                                 textColor: primaryColor,
@@ -106,6 +109,15 @@ class InformationTutorContainer extends StatelessWidget {
                               ))
                           .toList()
                     ],
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  Text(
+                    tutor.bio,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: text16.copyWith(color: Colors.grey),
                   ),
                   SizedBox(
                     height: 25.h,

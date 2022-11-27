@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
@@ -26,28 +27,35 @@ class DashBoardPage extends BasePage<DashBoardController> {
           SizedBox(
             height: 33.h,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                LocalString.dashBoardRecommendTutor,
-                style: text20.copyWith(fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: 15.h,
-              ),
-              InformationTutorContainer(
-                controller: controller,
-                countRating: 0,
-              ),
-              SizedBox(
-                height: 15.h,
-              ),
-              InformationTutorContainer(
-                controller: controller,
-                countRating: 4,
-              )
-            ],
+          Text(
+            LocalString.dashBoardRecommendTutor,
+            style: text20.copyWith(fontWeight: FontWeight.w600),
+          ),
+          Obx(
+            () => controller.loading.value
+                ? const Padding(
+                    padding: EdgeInsets.only(top: 15.0),
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      ...controller.listTuror.map((element) => Column(
+                            children: [
+                              InformationTutorContainer(
+                                tutor: element,
+                              ),
+                            ],
+                          ))
+                    ],
+                  ),
           ),
           SizedBox(
             height: 33.h,

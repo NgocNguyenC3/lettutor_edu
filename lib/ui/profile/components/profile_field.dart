@@ -64,7 +64,7 @@ class ProfileField extends StatelessWidget {
           title: LocalString.profilePhone,
           isImportant: true,
           child: baseTextField(
-              readOnly: true,
+              readOnly: controller.user!.isPhoneActivated,
               onChanged: (value) {},
               controller: controller.controllers[phoneField],
               hintText: ''),
@@ -106,7 +106,7 @@ class ProfileField extends StatelessWidget {
         InputFieldProfile(
           title: LocalString.profileWantToLearn,
           isImportant: true,
-          child: const WantToLearnWrap(),
+          child: WantToLearnWrap(),
         ),
         SizedBox(height: 15.h),
         //
@@ -134,4 +134,3 @@ class ProfileField extends StatelessWidget {
     );
   }
 }
-

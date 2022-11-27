@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
@@ -6,8 +7,10 @@ import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
 import 'package:lettutor_edu_clone/widgets/icon/circle_icon_widget.dart';
 
 class LogoProfile extends StatelessWidget {
-  const LogoProfile({
+  final userLink;
+  LogoProfile({
     Key? key,
+    required this.userLink,
   }) : super(key: key);
 
   @override
@@ -16,7 +19,10 @@ class LogoProfile extends StatelessWidget {
       children: [
         CircleBox(
           size: 130.w,
-          child: Assets.images.img.image(fit: BoxFit.cover),
+          child: CachedNetworkImage(
+            imageUrl: userLink,
+            fit: BoxFit.cover,
+          ),
         ),
         Positioned(
           left: 90.w,

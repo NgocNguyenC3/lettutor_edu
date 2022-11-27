@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/base_button.dart';
-import 'package:lettutor_edu_clone/widgets/common/button/loading/three_bounce.dart';
 
 class LoadingButtonWidget extends StatelessWidget {
   const LoadingButtonWidget({
@@ -51,7 +50,7 @@ class LoadingButtonWidget extends StatelessWidget {
                 ],
               ),
               alignment: Alignment.center,
-              child: ThreeBounce(color: textColor),
+              child: const CircularProgressIndicator(color: Colors.grey,),
             )
           : GestureDetector(
               onTap: () {

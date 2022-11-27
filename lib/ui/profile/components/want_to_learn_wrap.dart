@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/controllers/app_controller.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
@@ -6,7 +8,9 @@ import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/label_english_type.dart';
 
 class WantToLearnWrap extends StatelessWidget {
-  const WantToLearnWrap({
+  final topics =
+      Get.find<AppController>().userModel.value?.getListWanttoLearn() ?? [];
+  WantToLearnWrap({
     Key? key,
   }) : super(key: key);
 
@@ -21,12 +25,11 @@ class WantToLearnWrap extends StatelessWidget {
             color: greyBorderColor,
           )),
       child: Wrap(spacing: 5.0.w, runSpacing: 5.0.w, children: [
-        LabelEnglishType(
-          content: 'Business English',
-        ),
-        LabelEnglishType(
-          content: 'Conversational English',
-        ),
+        ...topics.map(
+          (e) => LabelEnglishType(
+            content: e.name,
+          ),
+        )
       ]),
     );
   }

@@ -34,7 +34,7 @@ class ForgotPasswordPage extends BasePage<ForgotPasswordController> {
             SizedBox(
               height: 15.h,
             ),
-            const InputFieldArea()
+            InputFieldArea(controller: controller)
           ],
         ),
       ),

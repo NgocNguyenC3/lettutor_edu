@@ -88,7 +88,7 @@ class InputFieldArea extends StatelessWidget {
               submit: () {
                 loginController.onClickLogIn();
               },
-              isLoading: false,
+              isLoading: loginController.loading.value,
               label: loginController.isLogin.value
                   ? LocalString.login
                   : LocalString.signUp),

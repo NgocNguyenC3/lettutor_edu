@@ -10,7 +10,6 @@ import 'package:lettutor_edu_clone/ui/profile/components/header_profile.dart';
 import 'package:lettutor_edu_clone/ui/profile/components/profile_field.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_controller.dart';
 
-
 class ProfilePage extends BasePage<ProfileController> {
   @override
   Widget buildContentView(BuildContext context) {
@@ -34,7 +33,7 @@ class ProfilePage extends BasePage<ProfileController> {
                   )),
             ),
             SizedBox(height: 35.h),
-            const HeaderProfile(),
+            HeaderProfile(),
             SizedBox(height: 35.h),
             Container(
               height: 46.h,
@@ -55,4 +54,3 @@ class ProfilePage extends BasePage<ProfileController> {
     );
   }
 }
-

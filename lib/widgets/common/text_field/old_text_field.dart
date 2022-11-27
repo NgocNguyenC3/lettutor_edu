@@ -16,6 +16,7 @@ TextFormField oldBaseTextField(
     int maxLine = 1,
     int? maxLength,
     Widget? icon,
+    FocusNode? focusNode,
     double radius = 5.0,
     FormFieldValidator<String>? validator}) {
   return TextFormField(
@@ -33,7 +34,7 @@ TextFormField oldBaseTextField(
     textCapitalization: TextCapitalization.words,
     keyboardType: isPhone ? TextInputType.phone : TextInputType.text,
     style: text12,
-    //focusNode: focusNode,
+    focusNode: focusNode,
     onChanged: onChanged,
     decoration: InputDecoration(
       hintStyle: text12.copyWith(color: greyColor),
