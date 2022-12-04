@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:intl/intl.dart';
+import 'package:lettutor_edu_clone/data/models/course.dart';
 
 import 'package:lettutor_edu_clone/data/models/topic.dart';
 import 'package:lettutor_edu_clone/util/date_time.dart';
@@ -28,6 +29,8 @@ class UserModel {
   DateTime birthday;
   List<Topic> learnTopics;
   List<Topic> testPreparations;
+  List<Course> courses;
+
   UserModel({
     this.timezone = 7,
     this.id = '',
@@ -45,6 +48,7 @@ class UserModel {
     this.roles = const [],
     this.learnTopics = const [],
     this.testPreparations = const [],
+    this.courses = const [],
     this.isActivated = false,
     this.isPhoneActivated = false,
     this.canSendMessage = false,
@@ -87,6 +91,9 @@ class UserModel {
       birthday: json['birthday'] != null
           ? DateFormat(time1).parse(json['birthday'])
           : DateTime(1990),
+      courses: json['courses'] == null
+          ? []
+          : (json['courses'] as List).map((e) => Course.fromJson(e)).toList(),
     );
   }
 

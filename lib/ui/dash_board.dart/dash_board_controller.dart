@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/controllers/base_controller.dart';
 import 'package:lettutor_edu_clone/data/models/tutor.dart';
 import 'package:lettutor_edu_clone/data/services.dart/tutor_service.dart';
@@ -37,7 +38,7 @@ class DashBoardController extends BaseController {
   };
 
   final RxList<Widget> nations = <Widget>[].obs;
-
+  RxInt totalPage = 1.obs;
   RxBool loading = false.obs;
   RxString currentType = 'All'.obs;
   RxList<Tutor> listTuror = <Tutor>[].obs;
@@ -111,5 +112,9 @@ class DashBoardController extends BaseController {
       }
     }
     nations.value = widgets;
+  }
+
+  void navigateTutorDetail(Tutor tutor) {
+    Get.toNamed(AppRoutes.TUTOR_DETAIL, arguments: {'id': tutor.userId});
   }
 }

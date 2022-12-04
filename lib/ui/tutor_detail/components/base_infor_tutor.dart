@@ -1,23 +1,32 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/app/app_pages.dart';
+import 'package:lettutor_edu_clone/controllers/app_controller.dart';
+import 'package:lettutor_edu_clone/data/models/tutor.dart';
+import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
+import 'package:lettutor_edu_clone/ui/tutor_detail/tutor_detail_controller.dart';
 
 import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
 
 import 'package:lettutor_edu_clone/widgets/icon/icon_text.dart';
 
 class BaseInforTutor extends StatelessWidget {
-  const BaseInforTutor({
+  final controller = Get.find<TutorDetailController>();
+  final languages = Get.find<AppController>().languagesContry;
+
+  BaseInforTutor({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Tutor tutor = controller.tutor.value;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 35.h),
       child: Column(
@@ -30,21 +39,22 @@ class BaseInforTutor extends StatelessWidget {
               children: [
                 CircleBox(
                     size: 110.w,
-                    child: Assets.images.img.image(fit: BoxFit.cover)),
+                    child: CachedNetworkImage(
+                        imageUrl: tutor.userModel!.avatar, fit: BoxFit.cover)),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Joan Gacer',
+                      tutor.userModel!.name,
                       style: text20.copyWith(fontWeight: FontWeight.w600),
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
                     RatingBar.builder(
-                      initialRating: 4,
-                      minRating: 4,
-                      maxRating: 4,
+                      initialRating: tutor.rating,
+                      minRating: tutor.rating,
+                      maxRating: tutor.rating,
                       direction: Axis.horizontal,
                       allowHalfRating: true,
                       itemCount: 5,
@@ -65,7 +75,8 @@ class BaseInforTutor extends StatelessWidget {
                         Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
                         SizedBox(width: 15.w),
                         Text(
-                          'Taiwan',
+                          languages[tutor.userModel!.country.toLowerCase()] ??
+                              tutor.userModel!.country,
                           style: text16,
                         ),
                       ],
@@ -79,7 +90,7 @@ class BaseInforTutor extends StatelessWidget {
             height: 15.h,
           ),
           Text(
-            'I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia.',
+            tutor.bio,
             style: text16.copyWith(color: Colors.grey),
           ),
           SizedBox(
@@ -88,22 +99,25 @@ class BaseInforTutor extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconText(
-                iconData: Icons.favorite,
-                title: LocalString.favorite,
+              Obx(
+                () => IconText(
+                  onTap: controller.onTapFavorite,
+                  iconData: Icons.favorite,
+                  title: LocalString.favorite,
+                  color: controller.isFavorite.value ? Colors.red : null,
+                ),
               ),
               IconText(
+                onTap: controller.report,
                 iconData: Icons.report,
                 title: LocalString.report,
               ),
-              InkWell(
+              IconText(
                 onTap: () {
-                  Get.toNamed(AppRoutes.REVIEW);
+                  controller.review();
                 },
-                child: IconText(
-                  iconData: Icons.star,
-                  title: LocalString.reviews,
-                ),
+                iconData: Icons.star,
+                title: LocalString.reviews,
               ),
             ],
           )

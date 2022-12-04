@@ -148,4 +148,6 @@ final Map<String, String> viVN = {
   'charAndNumRequirement': 'Yêu cầu chữ và số',
   'updatePhoneRequirement': 'Mời cập nhật số điện thoại',
   'addressRequirement': 'Sai định dạng địa chỉ',
+  'reportHint': 'Vui lòng nhập vấn đề bạn gặp phải',
+  'booked': 'Đã đặt lịch',
 };

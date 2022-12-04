@@ -148,4 +148,7 @@ class LocalString {
   static final String charAndNumRequirement = 'charAndNumRequirement'.tr;
   static final String updatePhoneRequirement = 'updatePhoneRequirement'.tr;
   static final String addressRequirement = 'addressRequirement'.tr;
+  static final String reportHint = 'reportHint'.tr;
+
+  static final String booked = 'booked'.tr;
 }

@@ -6,28 +6,34 @@ import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 
 class IconText extends StatelessWidget {
   String title;
+  Function()? onTap;
   IconData iconData;
   Color? color;
   IconText({
     Key? key,
     required this.title,
+    this.onTap,
     required this.iconData,
+    this.color,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(
-          iconData,
-          size: 30,
-          color: color??primaryColor,
-        ),
-        Text(
-          title,
-          style: text16.copyWith(color: primaryColor),
-        )
-      ],
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Icon(
+            iconData,
+            size: 30,
+            color: color ?? primaryColor,
+          ),
+          Text(
+            title,
+            style: text16.copyWith(color: primaryColor),
+          )
+        ],
+      ),
     );
   }
 }

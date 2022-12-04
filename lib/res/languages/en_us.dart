@@ -147,4 +147,6 @@ final Map<String, String> enUS = {
   'charAndNumRequirement': 'Requires letters and numbers',
   'updatePhoneRequirement': 'Please update your phone number',
   'addressRequirement': 'Wrong address format',
+  'reportHint': 'Please enter your problem',
+  'booked': 'Booked',
 };

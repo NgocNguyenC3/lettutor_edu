@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/res/constants/constants.dart';
 
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
@@ -26,15 +28,17 @@ class ReviewPage extends BasePage<ReviewController> {
           SizedBox(
             height: 25.h,
           ),
-          ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((e) => Column(
+          ...controller.feedBack.map((e) => Column(
                 children: [
                   CommentItem(
-                    image: Assets.images.img.image(fit: BoxFit.cover),
-                    message:
-                        'Nice bro, Đoàn Ngọc Nguyên, 19120605@student.hcmus.edu.vn',
-                    name: 'Long Long',
-                    time: '6 months ago',
-                    rating: 5,
+                    image: CachedNetworkImage(
+                      fit: BoxFit.cover,
+                      imageUrl: e.firstInfo?.avatar ?? imgLink,
+                    ),
+                    message: e.content,
+                    name: e.firstInfo?.name ?? '',
+                    time: e.createdAt.toString(),
+                    rating: e.rating.toDouble(),
                   ),
                   SizedBox(
                     height: 15.h,

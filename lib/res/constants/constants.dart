@@ -14,7 +14,7 @@ const String dateStartField = 'dateStartField';
 const String dateEndField = 'dateEndField';
 
 const String imgLink =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSalEj8tnk7AywBgsPErBHh2_8vFwc2yZty-mqmzy3t6pP_lN3WnokkH8ghoeFPZ13cs3g&usqp=CAU';
+    'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png';
 final defUser = UserModel(birthday: DateTime(1990));
 
 final nationalityContent = {

@@ -7,42 +7,47 @@ import 'package:lettutor_edu_clone/ui/tutor_detail/components/booking_schedule_i
 import 'package:lettutor_edu_clone/ui/tutor_detail/components/tutor_main_detail.dart';
 import 'package:lettutor_edu_clone/ui/tutor_detail/components/tutor_video.dart';
 import 'package:lettutor_edu_clone/ui/tutor_detail/tutor_detail_controller.dart';
+import 'package:lettutor_edu_clone/util/date_time.dart';
+import 'package:intl/intl.dart';
 
 class TutorDetailPage extends BasePage<TutorDetailController> {
   @override
   Widget buildContentView(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const BaseInforTutor(),
-          SizedBox(
-            height: 20.h,
-          ),
-          TutorVideo(controller: controller),
-          SizedBox(
-            height: 20.h,
-          ),
-          TutorMainDetail(controller: controller),
-          SizedBox(
-            height: 20.h,
-          ),
-          BookingScheduleItem(
-            date: '20/10 Thu',
-            time: '00:00 - 00:25',
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          BookingScheduleItem(
-            date: '21/10 Fri',
-            time: '00:00 - 00:25',
-          ),
-          SizedBox(
-            height: 50.h,
-          ),
-        ],
-      ),
-    );
+    return controller.isLoadingInit.value
+        ? const Center(child: CircularProgressIndicator())
+        : SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                BaseInforTutor(),
+                SizedBox(
+                  height: 20.h,
+                ),
+                TutorVideo(controller: controller),
+                SizedBox(
+                  height: 20.h,
+                ),
+                TutorMainDetail(controller: controller),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Wrap(
+                  runSpacing: 10,
+                  children: [
+                    ...controller.schedules.map(
+                      (element) {
+                        return BookingScheduleItem(
+                          element: element,
+                        );
+                      },
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 50.h,
+                ),
+              ],
+            ),
+          );
   }
 }

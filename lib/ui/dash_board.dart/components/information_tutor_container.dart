@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,7 @@ import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
 
 class InformationTutorContainer extends StatelessWidget {
   final languages = Get.find<AppController>().languagesContry;
+  final controller = Get.find<DashBoardController>();
   Tutor tutor;
   InformationTutorContainer({
     Key? key,
@@ -44,9 +46,13 @@ class InformationTutorContainer extends StatelessWidget {
                 children: [
                   Center(
                     child: CircleBox(
-                      size: 80.w,
-                      child: Assets.images.img.image(fit: BoxFit.cover),
-                    ),
+                        size: 80.w,
+                        child: CachedNetworkImage(
+                          fit: BoxFit.cover,
+                          height: 80.w,
+                          width: 80.w,
+                          imageUrl: user.avatar,
+                        )),
                   ),
                   SizedBox(
                     height: 10.h,
@@ -128,7 +134,7 @@ class InformationTutorContainer extends StatelessWidget {
                       width: Get.width / 2 - 30.w,
                       child: LoadingButtonWidget(
                           submit: () {
-                            Get.toNamed(AppRoutes.TUTOR_DETAIL);
+                            controller.navigateTutorDetail(tutor);
                           },
                           height: 30.h,
                           isLoading: false,
@@ -147,7 +153,7 @@ class InformationTutorContainer extends StatelessWidget {
             top: 30.h,
             child: const Icon(
               Icons.favorite,
-              color: Colors.red,
+              color: Colors.blue,
               size: 25,
             ))
       ],

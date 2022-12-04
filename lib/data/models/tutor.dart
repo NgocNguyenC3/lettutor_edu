@@ -1,12 +1,15 @@
 // ignore_for_file: public_member_api_docs= '', sort_constructors_first
+import 'package:intl/intl.dart';
+
+import 'package:lettutor_edu_clone/data/models/course.dart';
 import 'package:lettutor_edu_clone/data/models/feed_back.dart';
 import 'package:lettutor_edu_clone/data/models/user.dart';
 import 'package:lettutor_edu_clone/util/date_time.dart';
-import 'package:intl/intl.dart';
 
 class Tutor {
   double rating;
   int price;
+  int totalFeedback;
   String userId;
   String id;
   String phoneAuth;
@@ -21,20 +24,26 @@ class Tutor {
   String interests;
   String specialties;
   String resume;
+  String languages;
 
   bool requestPassword;
   bool isPhoneAuthActivated;
   bool isNative;
   bool isPublicRecord;
+  bool isFavorite;
   UserModel? user;
+  // Cái này do tk BE ngu quá nên để vầy
+  UserModel? userModel;
   DateTime? createdAt;
-  DateTime? updatedAt;
+  DateTime? updatedAt;  
   DateTime? deletedAt;
   List<String> studentGroupId;
   List<Feedback> feedbacks;
 
   Tutor({
     this.rating = 0,
+    this.price = 0,
+    this.totalFeedback = 0,
     this.userId = '',
     this.id = '',
     this.phoneAuth = '',
@@ -49,12 +58,14 @@ class Tutor {
     this.interests = '',
     this.specialties = '',
     this.resume = '',
-    this.price = 0,
+    this.languages = '',
     this.requestPassword = false,
     this.isPhoneAuthActivated = false,
     this.isNative = false,
     this.isPublicRecord = false,
+    this.isFavorite = false,
     this.user,
+    this.userModel,
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
@@ -79,12 +90,16 @@ class Tutor {
       interests: json['interests'] ?? '',
       specialties: json['specialties'] ?? '',
       resume: json['resume'] ?? '',
+      languages: json['languages'] ?? '',
       price: json['price'] ?? 0,
       requestPassword: json['requestPassword'] ?? false,
       isPhoneAuthActivated: json['isPhoneAuthActivated'] ?? false,
       isNative: json['isNative'] ?? false,
       isPublicRecord: json['isPublicRecord'] ?? false,
+      isFavorite: json['isFavorite'] ?? false,
       user: UserModel.fromJson(json),
+      userModel:
+          (json['User'] == null) ? null : UserModel.fromJson(json['User']),
       createdAt: json['createdAt'] != null
           ? DateFormat(time1).parse(json['createdAt'])
           : DateTime(1990),
@@ -102,6 +117,7 @@ class Tutor {
           : (json['feedbacks'] as List)
               .map((e) => Feedback.fromJson(e))
               .toList(),
+      
     );
   }
 }
