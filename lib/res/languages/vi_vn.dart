@@ -150,4 +150,8 @@ final Map<String, String> viVN = {
   'addressRequirement': 'Sai định dạng địa chỉ',
   'reportHint': 'Vui lòng nhập vấn đề bạn gặp phải',
   'booked': 'Đã đặt lịch',
+  'minutes': 'phút',
+  'hours': 'giờ',
+  'purpose': 'Bạn có thể làm gì',
+  'reason': 'Tại sao bạn nên học khóa học này',
 };

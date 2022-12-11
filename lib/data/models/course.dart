@@ -1,3 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:lettutor_edu_clone/data/models/category.dart';
+import 'package:lettutor_edu_clone/data/models/topic.dart';
+
 class Course {
   // double rating;
   int coursePrice;
@@ -36,6 +40,8 @@ class Course {
   // UserModel? userModel;
   DateTime? createdAt;
   DateTime? updatedAt;
+  List<Topic> topics;
+  List<Category> categories;
   // DateTime? deletedAt;
   // List<String> studentGroupId;
   // List<Feedback> feedbacks;
@@ -45,17 +51,6 @@ class Course {
     // this.price = 0,
     // this.totalFeedback = 0,
     // this.userId = '',
-    this.id = '',
-    this.description = '',
-    this.name = '',
-    this.imageUrl = '',
-    this.reason = '',
-    this.purpose = '',
-    this.other_details = '',
-    this.level = '',
-    this.visible = false,
-    this.coursePrice = 0,
-    this.defaultPrice = 0,
     // this.phoneAuth = '',
     // this.caredByStaffId = '',
     // this.video = '',
@@ -75,11 +70,24 @@ class Course {
     // this.isFavorite = false,
     // this.user,
     // this.userModel,
-    this.createdAt,
-    this.updatedAt,
     // this.deletedAt,
     // this.studentGroupId = const [],
     // this.feedbacks = const [],
+    this.coursePrice = 0,
+    this.defaultPrice = 0,
+    this.id = '',
+    this.name = '',
+    this.description = '',
+    this.imageUrl = '',
+    this.reason = '',
+    this.purpose = '',
+    this.other_details = '',
+    this.level = '',
+    this.visible = false,
+    this.createdAt,
+    this.updatedAt,
+    this.topics = const [],
+    this.categories = const [],
   });
 
   factory Course.fromJson(json) {
@@ -93,8 +101,16 @@ class Course {
       other_details: json['other_details'] ?? '',
       level: json['level'] ?? '',
       visible: json['visible'] ?? false,
-      coursePrice: json['coursePrice'] ?? 0,
-      defaultPrice: json['defaultPrice'] ?? 0,
+      coursePrice: json['course_price'] ?? 0,
+      defaultPrice: json['default_price'] ?? 0,
+      topics: json['topics'] == null
+          ? []
+          : (json['topics'] as List).map((e) => Topic.fromJson(e)).toList(),
+      categories: json['categories'] == null
+          ? []
+          : (json['categories'] as List)
+              .map((e) => Category.fromJson(e))
+              .toList(),
     );
   }
 }

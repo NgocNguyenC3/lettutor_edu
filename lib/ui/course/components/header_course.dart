@@ -32,7 +32,7 @@ class HeaderCourse extends StatelessWidget {
           children: [
             Text(
               LocalString.courseTitle,
-              style: text26.copyWith(fontWeight: FontWeight.w700),
+              style: text20.copyWith(fontWeight: FontWeight.w700),
             ),
             SizedBox(
               height: 15.h,

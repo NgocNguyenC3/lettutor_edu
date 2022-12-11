@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/app/app_pages.dart';
+import 'package:lettutor_edu_clone/data/models/course.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
@@ -54,55 +56,67 @@ class TabBarview extends StatelessWidget {
         SizedBox(
           height: 20.h,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'EngLish For Traveling',
-              style: text26,
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            BoxShadowContainer(
-              onTap: () {
-                Get.toNamed(AppRoutes.COURSE_DETAIL);
-              },
-              width: 280.w,
-              padding: EdgeInsets.only(bottom: 20.h),
-              child: CourseItem(
-                mainTitle: 'Life in the Internet Age',
-                subTitle:
-                    'Lets discuss how technology is changing the way we live',
-                bottomWidget: Text(
-                  'Intermediate 9 lessons',
-                  style: text14,
+        Obx(() => (!controller.isLoadingCourse.value)
+            ? Column(
+                children: [
+                  if (controller.courseMap.isNotEmpty)
+                    ...controller.courseMap.entries
+                        .map((e) => buildCourse(e.key, e.value))
+                        .toList(),
+                  if (controller.courseMap.isEmpty)
+                    const Center(
+                      child: Icon(
+                        Icons.deselect,
+                        size: 100,
+                      ),
+                    )
+                ],
+              )
+            : const SizedBox())
+      ],
+    );
+  }
+
+  Column buildCourse(String title, List<Course> courses) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          title,
+          style: text26.copyWith(color: primaryColor),
+        ),
+        SizedBox(
+          height: 20.h,
+        ),
+        ...courses.map((e) => Column(
+              children: [
+                BoxShadowContainer(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.COURSE_DETAIL, arguments: [e]);
+                  },
+                  width: 280.w,
+                  padding: EdgeInsets.only(bottom: 20.h),
+                  child: CourseItem(
+                    mainTitle: e.name,
+                    subTitle: e.description,
+                    bottomWidget: Text(
+                      e.topics.isEmpty
+                          ? 'Intermediate'
+                          : 'Intermediate ${e.topics.length} lessons',
+                      style: text14,
+                    ),
+                    image: CachedNetworkImage(
+                        imageUrl: e.imageUrl, fit: BoxFit.cover),
+                  ),
                 ),
-                image: Assets.images.imgCourse1.image(fit: BoxFit.cover),
-              ),
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            BoxShadowContainer(
-              onTap: () {
-                Get.toNamed(AppRoutes.COURSE_DETAIL);
-              },
-              width: 280.w,
-              padding: EdgeInsets.only(bottom: 20.h),
-              child: CourseItem(
-                mainTitle: 'Life in the Internet Age',
-                subTitle:
-                    'Lets discuss how technology is changing the way we live',
-                bottomWidget: Text(
-                  'Intermediate 9 lessons',
-                  style: text14,
+                SizedBox(
+                  height: 30.h,
                 ),
-                image: Assets.images.imgCourse2.image(fit: BoxFit.cover),
-              ),
-            ),
-          ],
-        )
+              ],
+            )),
+        SizedBox(
+          height: 20.h,
+        ),
       ],
     );
   }

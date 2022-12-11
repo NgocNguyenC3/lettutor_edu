@@ -149,4 +149,8 @@ final Map<String, String> enUS = {
   'addressRequirement': 'Wrong address format',
   'reportHint': 'Please enter your problem',
   'booked': 'Booked',
+  'minutes': 'minutes',
+  'hours': 'hours',
+  'purpose': 'What will you be able to do',
+  'reason': 'Why take this course',
 };

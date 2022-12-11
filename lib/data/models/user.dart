@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:intl/intl.dart';
-import 'package:lettutor_edu_clone/data/models/course.dart';
 
+import 'package:lettutor_edu_clone/data/models/course.dart';
 import 'package:lettutor_edu_clone/data/models/topic.dart';
+import 'package:lettutor_edu_clone/data/models/wallet_info.dart';
 import 'package:lettutor_edu_clone/util/date_time.dart';
 
 class UserModel {
@@ -26,6 +27,7 @@ class UserModel {
   bool isOnline;
   //language
   //walletInfo
+  WalletInfo? walletInfo;
   DateTime birthday;
   List<Topic> learnTopics;
   List<Topic> testPreparations;
@@ -46,17 +48,19 @@ class UserModel {
     this.phone = '',
     this.studySchedule = '',
     this.roles = const [],
-    this.learnTopics = const [],
-    this.testPreparations = const [],
-    this.courses = const [],
     this.isActivated = false,
     this.isPhoneActivated = false,
     this.canSendMessage = false,
     this.isOnline = false,
+    this.walletInfo,
     required this.birthday,
+    this.learnTopics = const [],
+    this.testPreparations = const [],
+    this.courses = const [],
   });
 
   factory UserModel.fromJson(json) {
+    print(json['walletInfo']);
     return UserModel(
       id: json['id'] ?? "",
       email: json['email'] ?? "",
@@ -72,6 +76,9 @@ class UserModel {
       phone: json['phone'] ?? "",
       studySchedule: json['studySchedule'] ?? "",
       isOnline: json['isOnline'] ?? false,
+      walletInfo: json['walletInfo'] == null
+          ? null
+          : WalletInfo.fromJson(json['walletInfo']),
       roles: json['roles'] == null
           ? []
           : (json['roles'] as List).map((e) => e.toString()).toList(),

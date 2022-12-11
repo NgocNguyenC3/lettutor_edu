@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/data/models/course.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
@@ -20,6 +22,7 @@ import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
 class CourseDetailPage extends BasePage<CourseDetailController> {
   @override
   Widget buildContentView(BuildContext context) {
+    Course course = controller.course;
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,14 +35,14 @@ class CourseDetailPage extends BasePage<CourseDetailController> {
               width: double.infinity,
               padding: EdgeInsets.only(bottom: 20.h),
               child: CourseItem(
-                mainTitle: 'Life in the Internet Age',
-                subTitle:
-                    'Lets discuss how technology is changing the way we live',
+                mainTitle: course.name,
+                subTitle: course.description,
                 bottomWidget: LoadingButtonWidget(
                     submit: () {},
                     isLoading: false,
                     label: LocalString.courseDetailDiscover),
-                image: Assets.images.imgCourse1.image(fit: BoxFit.cover),
+                image: CachedNetworkImage(
+                    imageUrl: course.imageUrl, fit: BoxFit.cover),
               ),
             ),
           ),
@@ -50,18 +53,14 @@ class CourseDetailPage extends BasePage<CourseDetailController> {
             title: LocalString.overview,
             children: [
               OverViewTitle(
-                title: 'Why take this course',
-                content:
-                    'Our world is rapidly changing thanks to new technology, and the vocabulary needed to discuss modern life is evolving almost daily. In this course you will learn the most up-to-date terminology from expertly crafted lessons as well from your native-speaking tutor.',
+                title: LocalString.reason,
+                content: course.reason,
               ),
               SizedBox(
                 height: 10.h,
               ),
               OverViewTitle(
-                title: 'What will you be able to do',
-                content:
-                    'You will learn vocabulary related to timely topics like remote work, artificial intelligence, online privacy, and more. In addition to discussion questions, you will practice intermediate level speaking tasks such as using data to describe trends.',
-              ),
+                  title: LocalString.purpose, content: course.purpose),
             ],
           ),
           SizedBox(
@@ -103,7 +102,7 @@ class CourseDetailPage extends BasePage<CourseDetailController> {
                     width: 5.w,
                   ),
                   Text(
-                    '9 Topics',
+                    '${course.topics.length} Topics',
                     style: text15.copyWith(fontWeight: FontWeight.w600),
                   )
                 ],
@@ -119,23 +118,32 @@ class CourseDetailPage extends BasePage<CourseDetailController> {
                   spacing: 6.w,
                   runSpacing: 5.w,
                   children: [
-                    ...[1, 2, 3, 4].map((e) => BoxShadowContainer(
+                    ...course.topics.map((e) => BoxShadowContainer(
                           borderRadius: BorderRadius.circular(3.r),
-                          width: Get.width / 2 - 28.w,
+                          width: Get.width,
                           child: Column(
                             children: [
+                              SizedBox(
+                                height: 20.h,
+                              ),
                               Text(
-                                e.toString(),
+                                course.topics.indexOf(e).toString(),
                                 style: text14.copyWith(
                                     fontWeight: FontWeight.w600,
                                     color: primaryColor),
                               ),
+                              SizedBox(
+                                height: 5.h,
+                              ),
                               Text(
-                                'Artificial Intelligence (AI)',
+                                e.name,
                                 style: text14.copyWith(
                                     fontWeight: FontWeight.w600),
                                 textAlign: TextAlign.center,
-                              )
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
                             ],
                           ),
                         ))

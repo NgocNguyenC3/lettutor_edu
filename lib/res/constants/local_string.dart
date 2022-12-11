@@ -151,4 +151,8 @@ class LocalString {
   static final String reportHint = 'reportHint'.tr;
 
   static final String booked = 'booked'.tr;
+  static final String hours = 'hours'.tr;
+  static final String minutes = 'minutes'.tr;
+  static final String reason = 'reason'.tr;
+  static final String purpose = 'purpose'.tr;
 }

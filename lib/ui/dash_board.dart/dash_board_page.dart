@@ -19,7 +19,7 @@ class DashBoardPage extends BasePage<DashBoardController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const HeaderDashboard(),
+          HeaderDashboard(),
           SizedBox(
             height: 33.h,
           ),

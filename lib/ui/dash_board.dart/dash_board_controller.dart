@@ -4,12 +4,14 @@ import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/controllers/base_controller.dart';
 import 'package:lettutor_edu_clone/data/models/tutor.dart';
 import 'package:lettutor_edu_clone/data/services.dart/tutor_service.dart';
+import 'package:lettutor_edu_clone/data/services.dart/user_service.dart';
 import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/label_english_type.dart';
 import 'package:lettutor_edu_clone/widgets/wrap_field.dart';
 
 class DashBoardController extends BaseController {
   final _tutorService = Get.find<TutorService>();
+  final _userService = Get.find<UserService>();
   final listType = [
     'All',
     'english-for-kids',
@@ -39,6 +41,7 @@ class DashBoardController extends BaseController {
 
   final RxList<Widget> nations = <Widget>[].obs;
   RxInt totalPage = 1.obs;
+  RxInt totalTime = 0.obs;
   RxBool loading = false.obs;
   RxString currentType = 'All'.obs;
   RxList<Tutor> listTuror = <Tutor>[].obs;
@@ -66,9 +69,17 @@ class DashBoardController extends BaseController {
   void onReloadData() {}
 
   void setUpData() async {
-    final res = await _tutorService.getAllTutorByPage();
-    listTuror.value =
-        (res['tutors']['rows'] as List).map((e) => Tutor.fromJson(e)).toList();
+    try {
+      final res = await _tutorService.getAllTutorByPage();
+      final resTotal = await _userService.getTotalTime();
+      totalTime.value = resTotal['total'];
+      print(totalTime.value);
+      listTuror.value = (res['tutors']['rows'] as List)
+          .map((e) => Tutor.fromJson(e))
+          .toList();
+    } catch (e) {
+      print(e);
+    }
   }
 
   void search() async {

@@ -27,4 +27,9 @@ class UserService extends BaseService {
     final response = await get(GET_LANGUAGES);
     saveLanguages(response);
   }
+
+  Future<dynamic> getTotalTime() async {
+    final response = await get(TOTAL_TIME);
+    return response;
+  }
 }

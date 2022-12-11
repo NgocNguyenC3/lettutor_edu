@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/data/rest_client.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/colors.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
+import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_controller.dart';
 
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 
 class HeaderDashboard extends StatelessWidget {
-  const HeaderDashboard({
+  final controller = Get.find<DashBoardController>();
+  HeaderDashboard({
     Key? key,
   }) : super(key: key);
 
@@ -52,10 +55,12 @@ class HeaderDashboard extends StatelessWidget {
           SizedBox(
             height: 15.h,
           ),
-          Text(
-            LocalString.dashBoardTotalTime,
-            textAlign: TextAlign.center,
-            style: text18.copyWith(color: Colors.white),
+          Obx(
+            () => Text(
+              '${LocalString.dashBoardTotalTime} ${controller.totalTime.value ~/ 60} ${LocalString.hours} ${controller.totalTime.value % 60} ${LocalString.minutes}',
+              textAlign: TextAlign.center,
+              style: text18.copyWith(color: Colors.white),
+            ),
           ),
           SizedBox(
             height: 15.h,
