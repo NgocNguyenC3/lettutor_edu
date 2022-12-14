@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
@@ -87,7 +88,17 @@ abstract class BaseService {
     RestClient.instance.setToken(response['tokens']['access']['token']);
   }
 
+  void saveUserInfoNotToken(response) {
+    _appController.userModel.value = UserModel.fromJson(response['user']);
+  }
+
+  void saveUserInfoNotTokenNotUser(response) {
+    _appController.userModel.value = UserModel.fromJson(response);
+  }
+
   void saveLanguages(response) {
     _appController.saveLanguages(response);
   }
+
+
 }

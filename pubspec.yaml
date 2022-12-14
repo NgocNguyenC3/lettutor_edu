@@ -24,6 +24,7 @@ dependencies:
     sdk: flutter
   sprintf: ^6.0.0
   validators: ^3.0.0
+  image_picker: ^0.8.6
 
 
 dev_dependencies:

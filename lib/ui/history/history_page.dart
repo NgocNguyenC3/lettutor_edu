@@ -36,14 +36,17 @@ class HistoryPage extends BasePage<HistoryController> {
           SizedBox(
             height: 20.h,
           ),
-          const HistoryItem(),
-          SizedBox(
-            height: 20.h,
-          ),
-          const HistoryItem(),
-          SizedBox(
-            height: 50.h,
-          )
+          ...controller.schedules.map((element) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HistoryItem(
+                    schedule: element,
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                ],
+              )),
         ],
       ),
     );

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/data/models/course.dart';
 
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
+import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
@@ -79,7 +80,7 @@ class CourseDetailPage extends BasePage<CourseDetailController> {
                     width: 5.w,
                   ),
                   Text(
-                    'Intermediate',
+                    levels[int.tryParse(course.level) ?? 1],
                     style: text15.copyWith(fontWeight: FontWeight.w600),
                   )
                 ],

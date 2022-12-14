@@ -1,36 +1,36 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/data/models/schedule.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
+import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
-import 'package:lettutor_edu_clone/ui/base/base_page.dart';
-import 'package:lettutor_edu_clone/ui/change_password/change_password_controller.dart';
-import 'package:lettutor_edu_clone/ui/schedule/components/header_item.dart';
-import 'package:lettutor_edu_clone/ui/schedule/schedule_controller.dart';
-import 'package:lettutor_edu_clone/widgets/common/box_shadow_container.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
-import 'package:lettutor_edu_clone/widgets/common/information_area.dart';
-import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
-import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
-import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
 import 'package:lettutor_edu_clone/widgets/item_widget.dart';
 
 class ScheduleItem extends StatelessWidget {
+  final Schedule schedule;
   const ScheduleItem({
     Key? key,
+    required this.schedule,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Schedule s = schedule.scheduleDetailInfo!.scheduleInfo!;
     return ItemWidget(
-      avatar: Assets.images.img.image(fit: BoxFit.cover),
-      date: 'Thu, 20 Oct 22',
+      nation: languages[s.tutorInfo!.user!.country]??'',
+      avatar: CachedNetworkImage(
+        imageUrl: s.tutorInfo!.user!.avatar,
+        fit: BoxFit.cover,
+      ),
+      date: s.date,
       imgNation: Assets.svg.common.iconUs.svg(height: 22.w, width: 22.w),
       isDisableButton: false,
-      name: 'Keegan',
-      subTime: '1 lesson',
+      name: s.tutorInfo!.user!.name,
+      subTime: '',
       child: Container(
         color: Colors.white,
         padding: EdgeInsets.all(10.w),
@@ -40,7 +40,7 @@ class ScheduleItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '18:30 - 18:55',
+                  '${s.startTime} - ${s.endTime}',
                   style: text16,
                 ),
                 SizedBox(
@@ -88,8 +88,11 @@ class ScheduleItem extends StatelessWidget {
                   Container(
                     color: Colors.white,
                     padding: EdgeInsets.all(10.w),
+                    width: double.infinity,
                     child: Text(
-                      LocalString.scheduleRequestContent,
+                      schedule.studentRequest.isEmpty
+                          ? LocalString.scheduleRequestContent
+                          : schedule.studentRequest,
                       style: text14.copyWith(color: Colors.grey),
                     ),
                   ),

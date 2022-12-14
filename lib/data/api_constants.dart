@@ -21,3 +21,8 @@ const CONTENT_CATEGORY_COURSE = 'content-category';
 const ALL_COURSE = 'course?page=%i&size=100';
 const ALL_E_BOOK = 'e-book?page=%i&size=10';
 const ALL_I_E_BOOk = 'material/interactive-e-book?page=%i&size=10';
+
+const SCHEDULE_ALL = 'booking/list/student';
+
+const UP_AVATAR = 'user/uploadAvatar';
+const USER_INFO = 'user/info';

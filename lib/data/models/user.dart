@@ -60,7 +60,6 @@ class UserModel {
   });
 
   factory UserModel.fromJson(json) {
-    print(json['walletInfo']);
     return UserModel(
       id: json['id'] ?? "",
       email: json['email'] ?? "",

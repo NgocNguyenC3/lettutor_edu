@@ -15,6 +15,7 @@ class ItemWidget extends StatelessWidget {
   String date;
   String subTime;
   String name;
+  String nation;
   bool isDisableButton;
   Widget avatar;
   Widget imgNation;
@@ -25,6 +26,7 @@ class ItemWidget extends StatelessWidget {
     required this.date,
     required this.subTime,
     required this.name,
+    required this.nation,
     required this.isDisableButton,
     required this.avatar,
     required this.imgNation,
@@ -65,7 +67,7 @@ class ItemWidget extends StatelessWidget {
                   InformationArea(
                     img: imgNation,
                     name: name,
-                    nation: 'Việt Nam',
+                    nation: nation,
                     child: Row(
                       children: [
                         Icon(

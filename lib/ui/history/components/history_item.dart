@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/data/models/schedule.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
+import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
@@ -18,39 +21,48 @@ import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
 import 'package:lettutor_edu_clone/widgets/item_widget.dart';
 
 class HistoryItem extends StatelessWidget {
+  final Schedule schedule;
   const HistoryItem({
     Key? key,
+    required this.schedule,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Schedule s = schedule.scheduleDetailInfo!.scheduleInfo!;
     return ItemWidget(
-        avatar: Assets.images.img.image(fit: BoxFit.cover),
-        date: 'Thu, 20 Oct 22',
+        nation: languages[s.tutorInfo!.user!.country] ?? '',
+        avatar: CachedNetworkImage(
+          imageUrl: s.tutorInfo!.user!.avatar,
+          fit: BoxFit.cover,
+        ),
+        date: s.date,
         imgNation: Assets.svg.common.iconUs.svg(height: 22.w, width: 22.w),
         isDisableButton: false,
-        name: 'Keegan',
-        subTime: '1 hour ago',
+        name: s.tutorInfo!.user!.name,
+        subTime: '',
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.all(10.w),
               color: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              width: double.infinity,
+              child: Wrap(
+                spacing: 10,
                 children: [
                   Text(
-                    LocalString.historyLessonTime,
+                    '${LocalString.historyLessonTime} ${s.startTime} - ${s.endTime}',
                     style: text18,
                   ),
-                  SizedBox(
-                    width: 100.w,
-                    child: LoadingButtonWidget(
-                        height: 25.w,
-                        submit: () {},
-                        isLoading: false,
-                        label: LocalString.record),
-                  ),
+                  if (schedule.showRecordUrl)
+                    SizedBox(
+                      width: 100.w,
+                      child: LoadingButtonWidget(
+                          height: 25.w,
+                          submit: () {},
+                          isLoading: false,
+                          label: LocalString.record),
+                    ),
                 ],
               ),
             ),
@@ -62,7 +74,9 @@ class HistoryItem extends StatelessWidget {
               padding: EdgeInsets.all(10.w),
               color: Colors.white,
               child: Text(
-                LocalString.historyNoRquest,
+                schedule.studentRequest.isEmpty
+                    ? LocalString.historyNoRquest
+                    : schedule.studentRequest,
                 style: text14.copyWith(color: Colors.grey),
               ),
             ),

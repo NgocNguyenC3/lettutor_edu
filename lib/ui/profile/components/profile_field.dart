@@ -1,16 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/controllers/app_controller.dart';
 
 import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
+import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 import 'package:lettutor_edu_clone/ui/profile/components/want_to_learn_wrap.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_controller.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.dart';
 import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
 
-class ProfileField extends StatelessWidget {
+class ProfileField extends StatefulWidget {
   const ProfileField({
     Key? key,
     required this.controller,
@@ -18,6 +21,11 @@ class ProfileField extends StatelessWidget {
 
   final ProfileController controller;
 
+  @override
+  State<ProfileField> createState() => _ProfileFieldState();
+}
+
+class _ProfileFieldState extends State<ProfileField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +37,7 @@ class ProfileField extends StatelessWidget {
           isImportant: true,
           child: baseTextField(
               onChanged: (value) {},
-              controller: controller.controllers[nameField],
+              controller: widget.controller.controllers[nameField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
@@ -39,7 +47,7 @@ class ProfileField extends StatelessWidget {
           child: baseTextField(
               readOnly: true,
               onChanged: (value) {},
-              controller: controller.controllers[emailField],
+              controller: widget.controller.controllers[emailField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
@@ -47,16 +55,22 @@ class ProfileField extends StatelessWidget {
         InputFieldProfile(
           title: LocalString.profileCountry,
           isImportant: true,
-          child: baseTextField(
-              onChanged: (value) {},
-              icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.expand_more,
-                    size: 25,
-                  )),
-              controller: controller.controllers[countryField],
-              hintText: ''),
+          child: DropdownButton(
+              value: widget.controller.controllers[countryField]!.text
+                  .toUpperCase(),
+              isExpanded: true, //Adding this property, does the magic
+              items: [
+                ...languages.entries.map((e) => DropdownMenuItem(
+                      value: e.key,
+                      child: Text(e.value,
+                          overflow: TextOverflow.ellipsis, style: text14),
+                    ))
+              ],
+              onChanged: (val) {
+                setState(() {
+                  widget.controller.controllers[countryField]!.text = val!;
+                });
+              }),
         ),
         SizedBox(height: 15.h),
         //
@@ -64,9 +78,9 @@ class ProfileField extends StatelessWidget {
           title: LocalString.profilePhone,
           isImportant: true,
           child: baseTextField(
-              readOnly: controller.user!.isPhoneActivated,
+              readOnly: widget.controller.user.value.isPhoneActivated,
               onChanged: (value) {},
-              controller: controller.controllers[phoneField],
+              controller: widget.controller.controllers[phoneField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
@@ -76,7 +90,7 @@ class ProfileField extends StatelessWidget {
           isImportant: true,
           child: baseTextField(
               onChanged: (value) {},
-              controller: controller.controllers[birthayDayField],
+              controller: widget.controller.controllers[birthayDayField],
               icon: IconButton(
                   onPressed: () {},
                   icon: const Icon(
@@ -88,19 +102,23 @@ class ProfileField extends StatelessWidget {
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profileMyLevel,
-          isImportant: true,
-          child: baseTextField(
-              icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.expand_more,
-                    size: 25,
-                  )),
-              onChanged: (value) {},
-              controller: controller.controllers[levelField],
-              hintText: ''),
-        ),
+            title: LocalString.profileMyLevel,
+            isImportant: true,
+            child: DropdownButton(
+                value: widget.controller.controllers[levelField]!.text,
+                isExpanded: true, //Adding this property, does the magic
+                items: [
+                  ...levelUser.entries.map((e) => DropdownMenuItem(
+                        value: e.key,
+                        child: Text(e.value,
+                            overflow: TextOverflow.ellipsis, style: text14),
+                      ))
+                ],
+                onChanged: (val) {
+                  setState(() {
+                    widget.controller.controllers[levelField]!.text = val!;
+                  });
+                })),
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
@@ -115,7 +133,7 @@ class ProfileField extends StatelessWidget {
           child: baseTextField(
               maxLine: 4,
               onChanged: (value) {},
-              controller: controller.controllers[studyScheduleField],
+              controller: widget.controller.controllers[studyScheduleField],
               hintText:
                   'Note the time of the week you want to study on LetTutor'),
         ),
