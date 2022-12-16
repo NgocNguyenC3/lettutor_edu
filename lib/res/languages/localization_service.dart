@@ -7,6 +7,7 @@ import 'package:lettutor_edu_clone/res/languages/en_us.dart';
 import 'package:lettutor_edu_clone/res/languages/vi_vn.dart';
 
 class LocalizationService extends Translations {
+  
   @override
   Map<String, Map<String, String>> get keys => {"vi": viVN, "en": enUS};
 
@@ -15,7 +16,7 @@ class LocalizationService extends Translations {
   static const VI_VN = "vi";
   static const EN_US = "en";
 
-  String _language = EN_US;
+  String _language = VI_VN;
 
   String get currentLanguage => _language;
 
@@ -28,7 +29,7 @@ class LocalizationService extends Translations {
   }
 
   Locale? get getLocale {
-    return Get.deviceLocale;
+    return Locale(_language);
   }
 
   Future<void> updateLanguage(String value) async {
@@ -36,6 +37,7 @@ class LocalizationService extends Translations {
     await appStorage.setLanguage(value);
     if (getLocale != null) {
       Get.updateLocale(getLocale!);
-    } 
+      
+    }
   }
 }

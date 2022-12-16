@@ -11,12 +11,13 @@
     <color name="background">#E5E5E5</color>
     <color name="disabledColor">#ECECEC</color>
     <color name="bgColor">#ffffff</color>
-    <color name="primaryColor">#131740</color>
+    <color name="primaryColor">#0071F0</color>
     <color name="dividerColor">#E7E7EA</color>
-    <color name="yellowColor">#FABB57</color>
+    <color name="yellowColor">#FFFF00</color>
     <color name="greenColor">#0C7C59</color>
     <color name="greenLightColor">#5AC07D</color>
     <color name="redColor">#FF0022</color>
     <color name="textGreyColor">#777777</color>
     <color name="orangeColor">#FB5427</color>
+    <color name="greyColor">#F5F6FA</color>
 </resources>

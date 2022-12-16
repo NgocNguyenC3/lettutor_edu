@@ -7,8 +7,7 @@ import 'package:lettutor_edu_clone/controllers/app_controller.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupStatusBar();
-  
 
-  await Get.put<AppController>(AppController()).init();
+  await Get.put<AppController>(AppController()).init(Environment.prod);
   runApp(LettutorCloneApp());
 }
