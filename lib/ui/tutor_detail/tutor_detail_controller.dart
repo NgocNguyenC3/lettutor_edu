@@ -151,5 +151,13 @@ class TutorDetailController extends BaseController {
             .toList();
   }
 
-
+  void book(String id) async {
+    try {
+      final res = await _tutorService.book(scheduleDetailIds: id);
+      notificationBar(message: res.message, isSuccess: true);
+      getDataSchedule();
+    } catch (e) {
+      print(e);
+    }
+  }
 }

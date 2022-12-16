@@ -128,4 +128,12 @@ class DashBoardController extends BaseController {
   void navigateTutorDetail(Tutor tutor) {
     Get.toNamed(AppRoutes.TUTOR_DETAIL, arguments: {'id': tutor.userId});
   }
+
+  void resetFilter() {
+    currentType.value = 'All';
+    controllers.forEach((key, value) {
+      value.text = '';
+    });
+    search();
+  }
 }

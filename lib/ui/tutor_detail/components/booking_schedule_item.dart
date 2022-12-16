@@ -6,10 +6,6 @@ import 'package:lettutor_edu_clone/data/models/schedule.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
-import 'package:lettutor_edu_clone/ui/base/base_page.dart';
-import 'package:lettutor_edu_clone/ui/tutor_detail/components/base_infor_tutor.dart';
-import 'package:lettutor_edu_clone/ui/tutor_detail/components/tutor_main_detail.dart';
-import 'package:lettutor_edu_clone/ui/tutor_detail/components/tutor_video.dart';
 import 'package:lettutor_edu_clone/ui/tutor_detail/tutor_detail_controller.dart';
 import 'package:lettutor_edu_clone/util/date_time.dart';
 import 'package:lettutor_edu_clone/widgets/common/box_shadow_container.dart';
@@ -22,7 +18,9 @@ class BookingScheduleItem extends StatelessWidget {
   bool isBooked = false;
 
   final Schedule element;
-  
+
+  final controller = Get.find<TutorDetailController>();
+
   BookingScheduleItem({
     Key? key,
     required this.element,
@@ -60,7 +58,7 @@ class BookingScheduleItem extends StatelessWidget {
               child: LoadingButtonWidget(
                   isDisable: isDisable,
                   submit: () {
-
+                    if (!isBooked && !isDisable) controller.book(element.id);
                   },
                   isLoading: false,
                   primaryColor: isBooked ? Colors.green : null,

@@ -1,6 +1,7 @@
 import 'package:lettutor_edu_clone/data/api_constants.dart';
 import 'package:lettutor_edu_clone/data/models/feed_back.dart';
 import 'package:lettutor_edu_clone/data/models/tutor.dart';
+import 'package:lettutor_edu_clone/data/response/api_response.dart';
 import 'package:lettutor_edu_clone/data/services.dart/base_service.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -69,5 +70,14 @@ class TutorService extends BaseService {
     };
     final response = await get(SCHEDULE, params: data);
     return response;
+  }
+
+  Future<ApiResponse> book({required String scheduleDetailIds}) async {
+    final data = {
+      'scheduleDetailIds': [scheduleDetailIds],
+      'note': '',
+    };
+    final response = await post(BOOKING, data: data);
+    return ApiResponse.fromJson(response);
   }
 }

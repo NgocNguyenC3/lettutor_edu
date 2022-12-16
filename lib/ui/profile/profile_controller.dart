@@ -9,6 +9,7 @@ import 'package:lettutor_edu_clone/controllers/app_controller.dart';
 import 'package:lettutor_edu_clone/controllers/base_controller.dart';
 import 'package:lettutor_edu_clone/data/models/user.dart';
 import 'package:lettutor_edu_clone/data/services.dart/user_service.dart';
+import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/constants.dart';
 import 'package:lettutor_edu_clone/util/date_time.dart';
 
@@ -77,5 +78,28 @@ class ProfileController extends BaseController {
       user.value = _appController.userModel.value!;
     } catch (e) {}
     setUpDataProfile();
+  }
+
+  selectDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: Get.context!,
+      initialDate: user.value.birthday,
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: primaryColor,
+            colorScheme: const ColorScheme.light(primary: primaryColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null) {
+      controllers[birthayDayField]?.text = DateFormat(time1).format(picked);
+    }
   }
 }

@@ -128,6 +128,9 @@ class FilterTutorArea extends StatelessWidget {
           height: 15.h,
         ),
         TextContainer(
+          onTap: () {
+            controller.resetFilter();
+          },
           title: LocalString.dashBoardResetFilter,
           color: Colors.white,
           borderColor: primaryColor,

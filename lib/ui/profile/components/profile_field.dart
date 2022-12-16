@@ -89,6 +89,10 @@ class _ProfileFieldState extends State<ProfileField> {
           title: LocalString.profileBirthday,
           isImportant: true,
           child: baseTextField(
+              readOnly: true,
+              onTap: () {
+                widget.controller.selectDate();
+              },
               onChanged: (value) {},
               controller: widget.controller.controllers[birthayDayField],
               icon: IconButton(

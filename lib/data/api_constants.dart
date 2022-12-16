@@ -26,3 +26,5 @@ const SCHEDULE_ALL = 'booking/list/student';
 
 const UP_AVATAR = 'user/uploadAvatar';
 const USER_INFO = 'user/info';
+
+const BOOKING = 'booking';
