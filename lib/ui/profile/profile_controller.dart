@@ -11,7 +11,9 @@ import 'package:lettutor_edu_clone/data/models/user.dart';
 import 'package:lettutor_edu_clone/data/services.dart/user_service.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/constants.dart';
+import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/util/date_time.dart';
+import 'package:lettutor_edu_clone/widgets/notification/notification_bar.dart';
 
 class ProfileController extends BaseController {
   final _appController = Get.find<AppController>();
@@ -74,7 +76,7 @@ class ProfileController extends BaseController {
 
   void getUserInfo() async {
     try {
-      _userService.getUserInfo();
+      await _userService.getUserInfo();
       user.value = _appController.userModel.value!;
     } catch (e) {}
     setUpDataProfile();
@@ -101,5 +103,34 @@ class ProfileController extends BaseController {
     if (picked != null) {
       controllers[birthayDayField]?.text = DateFormat(time1).format(picked);
     }
+  }
+
+  Future<void> saveInfo() async {
+    for (var i in controllers.entries) {
+      if (i.key == studyScheduleField) {
+        continue;
+      }
+      if (i.value.text.isEmpty) {
+        notificationBar(message: LocalString.finishInfo, isSuccess: false);
+        return;
+      }
+    }
+    try {
+      await _userService.saveUser(
+        birthday: controllers[birthayDayField]!.text,
+        country: controllers[countryField]!.text.toUpperCase(),
+        level: controllers[levelField]!.text,
+        name: controllers[nameField]!.text,
+        phone: controllers[phoneField]!.text,
+        learnTopics: ["4", "5"],
+        studySchedule: controllers[studyScheduleField]!.text,
+        testPreparations: ["2", "3", "4"],
+      );
+      user.value = _appController.userModel.value!;
+      notificationBar(message: LocalString.success, isSuccess: false);
+    } catch (e) {
+      notificationBar(message: 'Something went wrong', isSuccess: false);
+    }
+    setUpDataProfile();
   }
 }

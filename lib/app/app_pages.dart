@@ -15,6 +15,8 @@ import 'package:lettutor_edu_clone/ui/history/history_binding.dart';
 import 'package:lettutor_edu_clone/ui/history/history_page.dart';
 import 'package:lettutor_edu_clone/ui/login/login_binding.dart';
 import 'package:lettutor_edu_clone/ui/login/login_page.dart';
+import 'package:lettutor_edu_clone/ui/pdf_view/pdf_binding.dart';
+import 'package:lettutor_edu_clone/ui/pdf_view/pdf_page.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_binding.dart';
 import 'package:lettutor_edu_clone/ui/profile/profile_page.dart';
 import 'package:lettutor_edu_clone/ui/review/review_binding.dart';
@@ -36,6 +38,7 @@ class AppRoutes {
   static String COURSE_DETAIL = '/course/detail';
   static String SCHEDULE = '/schedule';
   static String HISTORY = '/history';
+  static String PDF = '/pdf';
 }
 
 class AppPages {
@@ -84,5 +87,6 @@ class AppPages {
         name: AppRoutes.HISTORY,
         page: () => HistoryPage(),
         binding: HistoryBinding()),
+    GetPage(name: AppRoutes.PDF, page: () => PdfPage(), binding: PdfBinding()),
   ];
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/app/app_pages.dart';
 import 'package:lettutor_edu_clone/controllers/base_controller.dart';
+import 'package:lettutor_edu_clone/data/models/schedule.dart';
 import 'package:lettutor_edu_clone/data/models/tutor.dart';
 import 'package:lettutor_edu_clone/data/services.dart/tutor_service.dart';
 import 'package:lettutor_edu_clone/data/services.dart/user_service.dart';
@@ -42,9 +43,12 @@ class DashBoardController extends BaseController {
   final RxList<Widget> nations = <Widget>[].obs;
   RxInt totalPage = 1.obs;
   RxInt totalTime = 0.obs;
+  RxInt currentNum = 1.obs;
   RxBool loading = false.obs;
+  RxBool isFavorite = false.obs;
   RxString currentType = 'All'.obs;
   RxList<Tutor> listTuror = <Tutor>[].obs;
+  RxList<Schedule> schedules = <Schedule>[].obs;
 
   FocusNode focusNode = FocusNode();
 
@@ -69,17 +73,8 @@ class DashBoardController extends BaseController {
   void onReloadData() {}
 
   void setUpData() async {
-    try {
-      final res = await _tutorService.getAllTutorByPage();
-      final resTotal = await _userService.getTotalTime();
-      totalTime.value = resTotal['total'];
-      print(totalTime.value);
-      listTuror.value = (res['tutors']['rows'] as List)
-          .map((e) => Tutor.fromJson(e))
-          .toList();
-    } catch (e) {
-      print(e);
-    }
+    getListbyPage(1);
+    getNextSchedule();
   }
 
   void search() async {
@@ -135,5 +130,39 @@ class DashBoardController extends BaseController {
       value.text = '';
     });
     search();
+  }
+
+  void handleFavorite() {
+    isFavorite.value = !isFavorite.value;
+  }
+
+  void getListbyPage(int pageNum) async {
+    loading.value = true;
+    currentNum.value = pageNum;
+    try {
+      final res = await _tutorService.getAllTutorByPage(page: pageNum);
+      int t = res['tutors']['count'] ?? 10;
+      totalPage.value = (t / 10).ceil();
+
+      final resTotal = await _userService.getTotalTime();
+      totalTime.value = resTotal['total'];
+      listTuror.value = (res['tutors']['rows'] as List)
+          .map((e) => Tutor.fromJson(e))
+          .toList();
+    } catch (e) {
+      print(e);
+    }
+    loading.value = false;
+  }
+
+  void getNextSchedule() async {
+    try {
+      final res = await _tutorService.getNextSchedule();
+      schedules.value =
+          (res['data'] as List).map((e) => Schedule.fromJson(e)).toList();
+      print(schedules.length);
+    } catch (e) {
+      print(e);
+    }
   }
 }

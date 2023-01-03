@@ -33,130 +33,141 @@ class InformationTutorContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = tutor.user ?? UserModel(birthday: DateTime(1990));
-    return Stack(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 3.0.w),
-          child: BoxShadowContainer(
-              padding: EdgeInsets.all(30.w),
-              borderRadius: BorderRadius.all(Radius.circular(10.r)),
-              width: Get.width - 20.w - 6.w,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: CircleBox(
-                        size: 80.w,
-                        child: CachedNetworkImage(
-                          fit: BoxFit.cover,
-                          height: 80.w,
-                          width: 80.w,
-                          imageUrl: user.avatar,
-                        )),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Text(
-                    user.name,
-                    style: text20.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Row(
-                    children: [
-                      Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
-                      SizedBox(width: 15.w),
-                      Text(
-                        languages[user.country.toLowerCase()] ?? user.country,
-                        style: text16,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  tutor.rating == 0
-                      ? Text(
-                          LocalString.dashBoardNoReview,
-                          style: text16.copyWith(color: Colors.grey),
-                        )
-                      : RatingBar.builder(
-                          initialRating: tutor.rating,
-                          minRating: tutor.rating,
-                          maxRating: tutor.rating,
-                          direction: Axis.horizontal,
-                          allowHalfRating: false,
-                          itemCount: 5,
-                          itemSize: 20,
-                          itemPadding:
-                              const EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                            size: 5,
-                          ),
-                          onRatingUpdate: (rating) {},
-                        ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Wrap(
-                    spacing: 5.w,
-                    runSpacing: 10.h,
-                    children: [
-                      ...tutor.specialties
-                          .split(',')
-                          .map((e) => TextContainer(
-                                title: e,
-                                textColor: primaryColor,
-                                color: primaryColor.withOpacity(0.2),
-                              ))
-                          .toList()
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Text(
-                    tutor.bio,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
-                    style: text16.copyWith(color: Colors.grey),
-                  ),
-                  SizedBox(
-                    height: 25.h,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: SizedBox(
-                      width: Get.width / 2 - 30.w,
-                      child: LoadingButtonWidget(
-                          submit: () {
-                            controller.navigateTutorDetail(tutor);
-                          },
-                          height: 30.h,
-                          isLoading: false,
-                          primaryColor: primaryColor.withOpacity(0.5),
-                          label: LocalString.book),
+    return InkWell(
+      onTap: () {
+        controller.navigateTutorDetail(tutor);
+      },
+      child: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 3.0.w),
+            child: BoxShadowContainer(
+                padding: EdgeInsets.all(30.w),
+                borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                width: Get.width - 20.w - 6.w,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: CircleBox(
+                          size: 80.w,
+                          child: CachedNetworkImage(
+                            fit: BoxFit.cover,
+                            height: 80.w,
+                            width: 80.w,
+                            imageUrl: user.avatar,
+                          )),
                     ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      user.name,
+                      style: text20.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Row(
+                      children: [
+                        Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
+                        SizedBox(width: 15.w),
+                        Text(
+                          languages[user.country.toLowerCase()] ?? user.country,
+                          style: text16,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    tutor.rating == 0
+                        ? Text(
+                            LocalString.dashBoardNoReview,
+                            style: text16.copyWith(color: Colors.grey),
+                          )
+                        : RatingBar.builder(
+                            initialRating: tutor.rating,
+                            minRating: tutor.rating,
+                            maxRating: tutor.rating,
+                            direction: Axis.horizontal,
+                            allowHalfRating: false,
+                            itemCount: 5,
+                            itemSize: 20,
+                            itemPadding:
+                                const EdgeInsets.symmetric(horizontal: 4.0),
+                            itemBuilder: (context, _) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                              size: 5,
+                            ),
+                            onRatingUpdate: (rating) {},
+                          ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    Wrap(
+                      spacing: 5.w,
+                      runSpacing: 10.h,
+                      children: [
+                        ...tutor.specialties
+                            .split(',')
+                            .map((e) => TextContainer(
+                                  title: e,
+                                  textColor: primaryColor,
+                                  color: primaryColor.withOpacity(0.2),
+                                ))
+                            .toList()
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    Text(
+                      tutor.bio,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      style: text16.copyWith(color: Colors.grey),
+                    ),
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: SizedBox(
+                        width: Get.width / 2 - 30.w,
+                        child: LoadingButtonWidget(
+                            submit: () {
+                              controller.navigateTutorDetail(tutor);
+                            },
+                            height: 30.h,
+                            isLoading: false,
+                            primaryColor: primaryColor.withOpacity(0.5),
+                            label: LocalString.book),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                  ],
+                )),
+          ),
+          Positioned(
+              right: 30.w,
+              top: 30.h,
+              child: Obx(
+                () => InkWell(
+                  onTap: controller.handleFavorite,
+                  child: Icon(
+                    Icons.favorite,
+                    color:
+                        controller.isFavorite.value ? Colors.red : Colors.grey,
+                    size: 25,
                   ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                ],
-              )),
-        ),
-        Positioned(
-            right: 30.w,
-            top: 30.h,
-            child: const Icon(
-              Icons.favorite,
-              color: Colors.blue,
-              size: 25,
-            ))
-      ],
+                ),
+              ))
+        ],
+      ),
     );
   }
 }

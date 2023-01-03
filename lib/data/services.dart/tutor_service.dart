@@ -49,7 +49,7 @@ class TutorService extends BaseService {
     return response;
   }
 
-  Future<dynamic> getSchedule(String tutorId) async {
+  Future<dynamic> getSchedule(String tutorId, DateTime time) async {
     // final data = {
     //   'tutorId': tutorId,
     //   'startTimestamp': 1670086800000,
@@ -57,12 +57,12 @@ class TutorService extends BaseService {
     // };
     final data = {
       'tutorId': tutorId,
-      'startTimestamp': DateTime.now()
+      'startTimestamp': time
           .subtract(const Duration(days: 1))
           .millisecondsSinceEpoch
           .toString()
           .substring(0, 13),
-      'endTimestamp': DateTime.now()
+      'endTimestamp': time
           .add(const Duration(days: 5))
           .millisecondsSinceEpoch
           .toString()
@@ -79,5 +79,17 @@ class TutorService extends BaseService {
     };
     final response = await post(BOOKING, data: data);
     return ApiResponse.fromJson(response);
+  }
+
+  Future<dynamic> getNextSchedule() async {
+    final data = {
+      'dateTime': DateTime.now()
+          .subtract(const Duration(hours: 2))
+          .millisecondsSinceEpoch
+          .toString()
+          .substring(0, 13),
+    };
+    final response = await get(NEXT_SCHEDULE, params: data);
+    return response;
   }
 }

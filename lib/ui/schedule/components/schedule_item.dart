@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/data/models/schedule.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/constants.dart';
@@ -7,12 +8,14 @@ import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/assets.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
+import 'package:lettutor_edu_clone/ui/schedule/schedule_controller.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 import 'package:lettutor_edu_clone/widgets/item_widget.dart';
 
 class ScheduleItem extends StatelessWidget {
+  final controller = Get.find<ScheduleController>();
   final Schedule schedule;
-  const ScheduleItem({
+   ScheduleItem({
     Key? key,
     required this.schedule,
   }) : super(key: key);
@@ -47,7 +50,9 @@ class ScheduleItem extends StatelessWidget {
                   width: 80.w,
                   height: 30.h,
                   child: LoadingButtonWidget(
-                      submit: () {},
+                      submit: () {
+                        controller.cancelSchedule(schedule);
+                      },
                       isLoading: false,
                       primaryColor: Colors.red,
                       label: LocalString.cancel),

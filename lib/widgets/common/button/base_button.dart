@@ -13,7 +13,8 @@ class ButtonWidget extends StatelessWidget {
       this.disablePrimaryColor,
       this.border,
       this.disableBorder,
-      this.width})
+      this.width,
+      this.onTap})
       : super(key: key);
 
   final String text;
@@ -26,26 +27,30 @@ class ButtonWidget extends StatelessWidget {
   final Border? border;
   final Border? disableBorder;
   final double? width;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: isDisable
-            ? disablePrimaryColor ?? const Color(0xFFF5F5F5)
-            : primaryColor ?? Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(6),
-        border: isDisable ? disableBorder : border,
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: text16.copyWith(
-            color: isDisable
-                ? disableTextColor ?? const Color.fromRGBO(89, 89, 89, 100)
-                : textColor,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          color: isDisable
+              ? disablePrimaryColor ?? const Color(0xFFF5F5F5)
+              : primaryColor ?? Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(6),
+          border: isDisable ? disableBorder : border,
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: text16.copyWith(
+              color: isDisable
+                  ? disableTextColor ?? const Color.fromRGBO(89, 89, 89, 100)
+                  : textColor,
+            ),
           ),
         ),
       ),

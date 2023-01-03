@@ -25,7 +25,7 @@ class InformationCourse extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HeaderCourse(),
+        HeaderCourse(),
         SizedBox(
           height: 20.h,
         ),

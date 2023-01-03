@@ -111,7 +111,7 @@ class CourseDetailPage extends BasePage<CourseDetailController> {
             ],
           ),
           SectionCourseDetail(
-            title: LocalString.courseDetailCourseLen,
+            title: '',
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.0.w),
@@ -120,6 +120,9 @@ class CourseDetailPage extends BasePage<CourseDetailController> {
                   runSpacing: 5.w,
                   children: [
                     ...course.topics.map((e) => BoxShadowContainer(
+                          onTap: () {
+                            controller.handlePdfView(e);
+                          },
                           borderRadius: BorderRadius.circular(3.r),
                           width: Get.width,
                           child: Column(

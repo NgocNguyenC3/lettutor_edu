@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/app/app_pages.dart';
@@ -5,6 +6,7 @@ import 'package:lettutor_edu_clone/controllers/base_controller.dart';
 import 'package:lettutor_edu_clone/data/models/schedule.dart';
 import 'package:lettutor_edu_clone/data/models/tutor.dart';
 import 'package:lettutor_edu_clone/data/services.dart/tutor_service.dart';
+import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
 import 'package:lettutor_edu_clone/util/validator.dart';
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
@@ -18,6 +20,7 @@ class TutorDetailController extends BaseController {
   final Rx<bool> isPlayingVideo = false.obs;
   final Rx<bool> isLoadingInit = true.obs;
   final Rx<bool> isFavorite = true.obs;
+  final Rx<DateTime> time = DateTime.now().obs;
   final Rx<Tutor> tutor = Tutor().obs;
   final RxList<Schedule> schedules = <Schedule>[].obs;
 
@@ -143,12 +146,13 @@ class TutorDetailController extends BaseController {
   }
 
   getDataSchedule() async {
-    final res = await _tutorService.getSchedule(tutorId);
+    final res = await _tutorService.getSchedule(tutorId, time.value);
     schedules.value = (res['scheduleOfTutor'] == null)
         ? []
         : (res['scheduleOfTutor'] as List)
             .map((e) => Schedule.fromJson(e))
             .toList();
+    schedules.sort((a, b) => a.startTimestamp.compareTo(b.startTimestamp));
   }
 
   void book(String id) async {
@@ -156,8 +160,35 @@ class TutorDetailController extends BaseController {
       final res = await _tutorService.book(scheduleDetailIds: id);
       notificationBar(message: res.message, isSuccess: true);
       getDataSchedule();
-    } catch (e) {
-      print(e);
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 500) {
+        notificationBar(message: LocalString.finishInfo, isSuccess: false);
+      }
     }
+  }
+
+  selectDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: Get.context!,
+      initialDate: time.value,
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: primaryColor,
+            colorScheme: const ColorScheme.light(primary: primaryColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null) {
+      time.value = picked;
+    }
+
+    getDataSchedule();
   }
 }

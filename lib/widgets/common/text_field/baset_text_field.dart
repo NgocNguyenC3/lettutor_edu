@@ -20,11 +20,11 @@ TextFormField baseTextField(
     InputBorder? focusedBorder,
     InputBorder? errorBorder,
     InputBorder? focusedErrorBorder,
+    FocusNode? focusNode,
     bool isOutline = false,
     FormFieldValidator<String>? validator}) {
   return TextFormField(
     onTap: onTap,
-
     readOnly: readOnly,
     inputFormatters: [
       LengthLimitingTextInputFormatter(maxLength),
@@ -37,7 +37,7 @@ TextFormField baseTextField(
     textCapitalization: TextCapitalization.words,
     keyboardType: isPhone ? TextInputType.phone : TextInputType.text,
     style: text12,
-    //focusNode: focusNode,
+    focusNode: focusNode,
     onChanged: onChanged,
     maxLines: maxLine,
     decoration: InputDecoration(

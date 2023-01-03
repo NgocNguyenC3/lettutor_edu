@@ -32,6 +32,7 @@ final levels = [
 ];
 
 Map<String, String> levelUser = {
+  '': 'None Level',
   'BEGINNER': 'Pre A1 (Beginner)',
   'HIGHER_BEGINNER': 'A1 (Higher-Beginner)',
   'PRE-INTERMEDIATE': 'A2 (Pre-Intermediate)',
@@ -42,6 +43,7 @@ Map<String, String> levelUser = {
 };
 
 Map<String, String> languages = {
+  '': '',
   'AF': 'Afghanistan',
   'AL': 'Albania',
   'DZ': 'Algeria',

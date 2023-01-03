@@ -11,6 +11,7 @@ import 'package:lettutor_edu_clone/ui/dash_board.dart/components/filter_area.dar
 import 'package:lettutor_edu_clone/ui/dash_board.dart/components/header_dash_board.dart';
 import 'package:lettutor_edu_clone/ui/dash_board.dart/components/information_tutor_container.dart';
 import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_controller.dart';
+import 'package:lettutor_edu_clone/widgets/paging_widget.dart';
 
 class DashBoardPage extends BasePage<DashBoardController> {
   @override
@@ -19,7 +20,7 @@ class DashBoardPage extends BasePage<DashBoardController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderDashboard(),
+          Obx(() => HeaderDashboard(schedules: controller.schedules.value)),
           SizedBox(
             height: 33.h,
           ),
@@ -52,10 +53,27 @@ class DashBoardPage extends BasePage<DashBoardController> {
                               InformationTutorContainer(
                                 tutor: element,
                               ),
+                              const SizedBox(
+                                height: 15,
+                              ),
                             ],
                           ))
                     ],
                   ),
+          ),
+          SizedBox(
+            height: 33.h,
+          ),
+          Obx(
+            () => !controller.loading.value
+                ? PagingWidget(
+                    currentNum: controller.currentNum.value,
+                    totalPage: controller.totalPage.value,
+                    pagingFunc: ((p0) {
+                      controller.getListbyPage(p0);
+                    }),
+                  )
+                : const SizedBox(),
           ),
           SizedBox(
             height: 33.h,
