@@ -153,4 +153,6 @@ final Map<String, String> enUS = {
   'hours': 'hours',
   'purpose': 'What will you be able to do',
   'reason': 'Why take this course',
+  'finishInfo': 'please update your information',
+  'success': 'Success',
 };

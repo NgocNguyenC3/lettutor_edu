@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/controllers/base_controller.dart';
 import 'package:lettutor_edu_clone/data/models/course.dart';
@@ -15,12 +16,23 @@ class CourseController extends BaseController {
   RxInt index = 0.obs;
   RxInt countPage = 0.obs;
   RxBool isLoadingCourse = false.obs;
+  RxInt currentPage = 1.obs;
+
+  final TextEditingController textController = TextEditingController();
+  final FocusNode focus = FocusNode();
 
   @override
   void onInit() {
     super.onInit();
 
     setUpData();
+    focus.addListener(() {
+      focus.addListener(() {
+        if (!focus.hasFocus) {
+          getAllCourse();
+        }
+      });
+    });
   }
 
   @override
@@ -28,6 +40,7 @@ class CourseController extends BaseController {
 
   onTapInDexTabBar(int i) {
     index.value = i;
+    currentPage.value = 1;
     courseMap = {};
     getAllCourse();
   }
@@ -37,11 +50,13 @@ class CourseController extends BaseController {
   }
 
   void getAllCourse({int page = 1}) async {
+    courseMap = {};
     isLoadingCourse.value = true;
     try {
-      final res =
-          await courseService.getAllCourse(page: page, type: index.value);
-      countPage.value = res['data']['count'];
+      final res = await courseService.getAllCourse(
+          page: page, type: index.value, q: textController.text);
+      int t = res['data']['count'] ?? 10;
+      countPage.value = (t / 10).ceil();
       courses.value =
           (res['data']['rows'] as List).map((e) => Course.fromJson(e)).toList();
       convertMapCourse();
@@ -61,5 +76,10 @@ class CourseController extends BaseController {
         }
       }
     }
+  }
+
+  void getListbyPage(int p0) {
+    getAllCourse(page: p0);
+    currentPage.value = p0;
   }
 }

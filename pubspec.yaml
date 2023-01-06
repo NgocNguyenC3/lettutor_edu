@@ -25,7 +25,9 @@ dependencies:
   sprintf: ^6.0.0
   validators: ^3.0.0
   image_picker: ^0.8.6
-
+  google_sign_in: ^5.4.2
+  flutter_login_facebook: ^1.7.0
+  flutter_cached_pdfview: ^0.4.1
 
 dev_dependencies:
   flutter_test:
@@ -34,7 +36,12 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_gen_runner: ^3.1.1
   build_runner: ^2.1.2
+  flutter_launcher_icons: "^0.11.0"
 
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/img_logo.png"
 
 flutter_gen:
   output: lib/res/gen/

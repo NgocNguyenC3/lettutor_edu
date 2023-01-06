@@ -58,7 +58,8 @@ class BookingScheduleItem extends StatelessWidget {
               child: LoadingButtonWidget(
                   isDisable: isDisable,
                   submit: () {
-                    if (!isBooked && !isDisable) controller.book(element.id);
+                    if (!isBooked && !isDisable)
+                      controller.book(element.scheduleDetails[0].id);
                   },
                   isLoading: false,
                   primaryColor: isBooked ? Colors.green : null,

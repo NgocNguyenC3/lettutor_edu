@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_edu_clone/data/models/schedule.dart';
 import 'package:lettutor_edu_clone/data/rest_client.dart';
 import 'package:lettutor_edu_clone/res/colors/colors_core.dart';
 import 'package:lettutor_edu_clone/res/constants/local_string.dart';
@@ -12,12 +13,17 @@ import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 
 class HeaderDashboard extends StatelessWidget {
   final controller = Get.find<DashBoardController>();
+  final List<Schedule> schedules;
   HeaderDashboard({
     Key? key,
+    required this.schedules,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String text = schedules.isEmpty
+        ? 'Không có buổi học nào'
+        : convertTime(schedules[0].scheduleDetailInfo?.scheduleInfo);
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 15.0.h),
@@ -38,19 +44,10 @@ class HeaderDashboard extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          Wrap(
-            alignment: WrapAlignment.center,
-            children: [
-              Text(
-                'T4, 19 Thg 10 22 00:00 - 00:25',
-                textAlign: TextAlign.center,
-                style: text18.copyWith(color: Colors.white),
-              ),
-              Text(
-                '(còn 06:51:34)',
-                style: text16.copyWith(color: ColorName.yellowColor),
-              ),
-            ],
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: text18.copyWith(color: Colors.white),
           ),
           SizedBox(
             height: 15.h,
@@ -78,5 +75,16 @@ class HeaderDashboard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  convertTime(Schedule? scheduleInfo) {
+    if (scheduleInfo == null) {
+      return 'Không có buổi học nào';
+    }
+
+    String text = '';
+    text +=
+        '${scheduleInfo.date} ${scheduleInfo.startTime} - ${scheduleInfo.endTime}';
+    return text;
   }
 }

@@ -40,7 +40,7 @@ class TextContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(radius ?? 10.0.r)),
         child: Text(
           title,
-          style: text12.copyWith(color: textColor),
+          style: text12.copyWith(color: isSelect ? Colors.white : textColor),
         ),
       ),
     );

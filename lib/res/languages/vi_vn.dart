@@ -154,4 +154,6 @@ final Map<String, String> viVN = {
   'hours': 'giờ',
   'purpose': 'Bạn có thể làm gì',
   'reason': 'Tại sao bạn nên học khóa học này',
+  'finishInfo': 'Vui lòng hoàn thành thông tin cá nhân',
+  'success': 'Thành công',
 };

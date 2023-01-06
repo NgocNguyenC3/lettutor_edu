@@ -149,7 +149,7 @@ class _ProfileFieldState extends State<ProfileField> {
             height: 40.h,
             width: 130.w,
             child: LoadingButtonWidget(
-                submit: () {}, isLoading: false, label: LocalString.save),
+                submit: () {widget.controller.saveInfo();}, isLoading: false, label: LocalString.save),
           ),
         )
       ]),

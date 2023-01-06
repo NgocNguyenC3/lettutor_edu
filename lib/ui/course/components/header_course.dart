@@ -12,9 +12,9 @@ import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.da
 import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
 import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
 
-
 class HeaderCourse extends StatelessWidget {
-  const HeaderCourse({
+  final controller = Get.find<CourseController>();
+  HeaderCourse({
     Key? key,
   }) : super(key: key);
 
@@ -25,24 +25,24 @@ class HeaderCourse extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CircleBox(
-            size: 110.w, child: Assets.svg.course.iconCourse.svg(fit: BoxFit.cover)),
+            size: 110.w,
+            child: Assets.svg.course.iconCourse.svg(fit: BoxFit.cover)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               LocalString.courseTitle,
-              style: text20.copyWith(fontWeight: FontWeight.w700),
-            ),
-            SizedBox(
-              height: 15.h,
+              style: text18.copyWith(fontWeight: FontWeight.w700),
+              maxLines: 2,
             ),
             SizedBox(
               width: 200.w,
               child: baseTextField(
                   onChanged: (value) {},
-                  controller: null,
+                  controller: controller.textController,
                   hintText: 'Course',
+                  focusNode: controller.focus,
                   icon: Icon(
                     Icons.search,
                     size: 15.w,

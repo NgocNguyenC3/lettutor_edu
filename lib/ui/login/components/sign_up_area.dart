@@ -35,6 +35,9 @@ class SignUpArea extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleIconWidget(
+                onTap: () {
+                  loginController.hanldeLogin3rd(Login3rd.facebook);
+                },
                 borderColor: ColorName.primaryColor,
                 child: Assets.svg.login.iconFacebook.svg(),
               ),
@@ -42,6 +45,9 @@ class SignUpArea extends StatelessWidget {
                 width: 15.w,
               ),
               CircleIconWidget(
+                onTap: () {
+                  loginController.hanldeLogin3rd(Login3rd.google);
+                },
                 borderColor: ColorName.primaryColor,
                 child: Assets.svg.login.iconGoogle.svg(),
               ),
@@ -85,5 +91,18 @@ class SignUpArea extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+enum Login3rd { google, facebook }
+
+extension Login3rdEx on Login3rd {
+  String get key {
+    switch (this) {
+      case Login3rd.google:
+        return 'google';
+      case Login3rd.facebook:
+        return 'facebook';
+    }
   }
 }

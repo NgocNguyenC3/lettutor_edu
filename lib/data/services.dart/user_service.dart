@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 
 import 'package:lettutor_edu_clone/data/api_constants.dart';
 import 'package:lettutor_edu_clone/data/response/api_response.dart';
+import 'package:lettutor_edu_clone/data/rest_client.dart';
 import 'package:lettutor_edu_clone/data/services.dart/base_service.dart';
+import 'package:sprintf/sprintf.dart';
 
 class UserService extends BaseService {
   Future<void> logAccount(
@@ -37,8 +39,9 @@ class UserService extends BaseService {
     final data = type == 0
         ? {
             'page': page,
-            'perPage': 20,
+            'perPage': 10,
             'dateTimeGte': DateTime.now()
+                .add(const Duration(hours: 5))
                 .millisecondsSinceEpoch
                 .toString()
                 .substring(0, 13),
@@ -47,8 +50,9 @@ class UserService extends BaseService {
           }
         : {
             'page': page,
-            'perPage': 20,
+            'perPage': 10,
             'dateTimeLte': DateTime.now()
+                .add(const Duration(hours: 5))
                 .millisecondsSinceEpoch
                 .toString()
                 .substring(0, 13),
@@ -71,5 +75,43 @@ class UserService extends BaseService {
   Future<void> getUserInfo() async {
     final response = await get(USER_INFO);
     saveUserInfoNotToken(response);
+  }
+
+  Future<void> login3rd(
+      {required String accessToken, required String type}) async {
+    final response =
+        await post(LOGIN_3RD + type, data: {"access_token": accessToken});
+    saveUserInfo(response);
+  }
+
+  Future<void> saveUser(
+      {birthday,
+      country,
+      learnTopics,
+      level,
+      name,
+      phone,
+      studySchedule,
+      testPreparations}) async {
+    await put(SAVEUSER, data: {
+      'birthday': birthday,
+      'country': country,
+      'learnTopics': learnTopics,
+      'level': level,
+      'name': name,
+      'phone': phone,
+      'studySchedule': studySchedule,
+      'testPreparations': testPreparations
+    });
+  }
+
+  Future<dynamic> cancelSchedule(
+      {required String scheduleDetailId, required int i}) async {
+    final Map<String, dynamic> body = {
+      'cancelInfo': {'cancelReasonId': i},
+      'scheduleDetailId': scheduleDetailId
+    };
+
+    return await delete(CANCEL_SCHEDULE, data: body);
   }
 }

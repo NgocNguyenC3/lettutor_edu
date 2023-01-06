@@ -155,4 +155,7 @@ class LocalString {
   static final String minutes = 'minutes'.tr;
   static final String reason = 'reason'.tr;
   static final String purpose = 'purpose'.tr;
+
+  static final String finishInfo = 'finishInfo'.tr;
+  static final String success = 'success'.tr;
 }

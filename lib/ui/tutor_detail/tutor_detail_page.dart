@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/ui/base/base_page.dart';
 import 'package:lettutor_edu_clone/ui/tutor_detail/components/base_infor_tutor.dart';
@@ -9,6 +10,7 @@ import 'package:lettutor_edu_clone/ui/tutor_detail/components/tutor_video.dart';
 import 'package:lettutor_edu_clone/ui/tutor_detail/tutor_detail_controller.dart';
 import 'package:lettutor_edu_clone/util/date_time.dart';
 import 'package:intl/intl.dart';
+import 'package:lettutor_edu_clone/widgets/common/button/base_button.dart';
 
 class TutorDetailPage extends BasePage<TutorDetailController> {
   @override
@@ -28,6 +30,15 @@ class TutorDetailPage extends BasePage<TutorDetailController> {
                   height: 20.h,
                 ),
                 TutorMainDetail(controller: controller),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Obx(
+                  () => ButtonWidget(
+                    text: DateFormat(time1).format(controller.time.value),
+                    onTap: controller.selectDate,
+                  ),
+                ),
                 SizedBox(
                   height: 20.h,
                 ),

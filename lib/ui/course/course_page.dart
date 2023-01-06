@@ -16,6 +16,7 @@ import 'package:lettutor_edu_clone/widgets/common/text_field/baset_text_field.da
 import 'package:lettutor_edu_clone/widgets/common/text_field/text_field_drop_down.dart';
 import 'package:lettutor_edu_clone/widgets/icon/circle_box.dart';
 import 'package:lettutor_edu_clone/widgets/input_field_profile.dart';
+import 'package:lettutor_edu_clone/widgets/paging_widget.dart';
 
 class CoursePage extends BasePage<CourseController> {
   @override
@@ -33,6 +34,20 @@ class CoursePage extends BasePage<CourseController> {
           ),
           TabBarview(
             controller: controller,
+          ),
+          SizedBox(
+            height: 25.h,
+          ),
+          Obx(
+            () => !controller.isLoadingCourse.value
+                ? PagingWidget(
+                    currentNum: controller.currentPage.value,
+                    totalPage: controller.countPage.value,
+                    pagingFunc: ((p0) {
+                      controller.getListbyPage(p0);
+                    }),
+                  )
+                : const SizedBox(),
           ),
           SizedBox(
             height: 25.h,
