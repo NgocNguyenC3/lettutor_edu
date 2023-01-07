@@ -160,7 +160,6 @@ class DashBoardController extends BaseController {
       final res = await _tutorService.getNextSchedule();
       schedules.value =
           (res['data'] as List).map((e) => Schedule.fromJson(e)).toList();
-      print(schedules.length);
     } catch (e) {
       print(e);
     }

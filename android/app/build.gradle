@@ -48,11 +48,18 @@ android {
         applicationId "com.example.lettutor_edu_clone"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 20
+        minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
+
+    packagingOptions {
+      pickFirst 'lib/x86/libc++_shared.so'
+      pickFirst 'lib/x86_64/libc++_shared.so'
+      pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+      pickFirst 'lib/arm64-v8a/libc++_shared.so'
+  }
 
     buildTypes {
         release {
@@ -71,4 +78,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.facebook.android:facebook-android-sdk:14.1.1"
     implementation 'com.facebook.android:facebook-login:14.1.1'
+    implementation ('org.jitsi.react:jitsi-meet-sdk:6.0.0') { transitive = true }
 }

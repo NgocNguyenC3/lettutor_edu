@@ -8,6 +8,7 @@ import 'package:lettutor_edu_clone/res/dimens.dart';
 import 'package:lettutor_edu_clone/res/gen/colors.gen.dart';
 import 'package:lettutor_edu_clone/res/theme/text_theme.dart';
 import 'package:lettutor_edu_clone/ui/dash_board.dart/dash_board_controller.dart';
+import 'package:lettutor_edu_clone/ui/video_call/video_call.dart';
 
 import 'package:lettutor_edu_clone/widgets/common/button/loading_button.dart';
 
@@ -62,16 +63,25 @@ class HeaderDashboard extends StatelessWidget {
           SizedBox(
             height: 15.h,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.0.w),
-            child: LoadingButtonWidget(
-                submit: () {},
-                isLoading: false,
-                height: 35.h,
-                textColor: primaryColor,
-                primaryColor: Colors.white,
-                label: LocalString.dashBoardEnterRoom),
-          ),
+          if (schedules.isNotEmpty)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0.w),
+              child: LoadingButtonWidget(
+                  submit: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => VideoCall(
+                              studentMeetingLink:
+                                  schedules[0].studentMeetingLink)),
+                    );
+                  },
+                  isLoading: false,
+                  height: 35.h,
+                  textColor: primaryColor,
+                  primaryColor: Colors.white,
+                  label: LocalString.dashBoardEnterRoom),
+            ),
         ],
       ),
     );

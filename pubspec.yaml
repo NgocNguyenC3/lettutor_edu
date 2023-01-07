@@ -28,6 +28,8 @@ dependencies:
   google_sign_in: ^5.4.2
   flutter_login_facebook: ^1.7.0
   flutter_cached_pdfview: ^0.4.1
+  jitsi_meet_wrapper: ^0.0.6
+  jwt_decoder: ^2.0.1
 
 dev_dependencies:
   flutter_test:
