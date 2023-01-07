@@ -9,6 +9,7 @@ class Schedule {
   String tutorId;
   String startTime;
   String endTime;
+  String studentMeetingLink;
 
   int startTimestamp;
   int endTimestamp;
@@ -26,6 +27,7 @@ class Schedule {
       this.tutorId = '',
       this.startTime = '',
       this.endTime = '',
+      this.studentMeetingLink = '',
       this.startTimestamp = 0,
       this.endTimestamp = 0,
       this.isBooked = false,
@@ -44,6 +46,7 @@ class Schedule {
       tutorId: json['tutorId'] ?? '',
       startTime: json['startTime'] ?? '',
       endTime: json['endTime'] ?? '',
+      studentMeetingLink: json['studentMeetingLink'] ?? '',
       startTimestamp: json['startTimestamp'] ?? 0,
       endTimestamp: json['endTimestamp'] ?? 0,
       isBooked: json['isBooked'] ?? false,
